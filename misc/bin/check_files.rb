@@ -12,3 +12,4 @@ if ruby_files.any?
 end
 
 exit (failures ? 1 : 0)
+
