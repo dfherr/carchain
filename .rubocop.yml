@@ -1,0 +1,238 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  CacheRootDirectory: "tmp"
+  DisplayStyleGuide: true
+  Exclude:
+    - test/**/*
+    - db/schema.rb
+    - db/**/*
+    - misc/**/*
+    - config.ru
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  CountComments: false  # count full line comments?
+  Max: 25
+  ExcludedMethods: []
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+#################
+# Disabled cops #
+#################
+
+Style/FileName:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassVars:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false
+Style/CollectionMethods:
+  Enabled: false
+Style/PerlBackrefs:
+  Enabled: false
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+Style/GlobalVars:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Style/TrailingUnderscoreVariable:
+  Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+Style/RegexpLiteral:
+  Enabled: false
+
+Lint/BlockAlignment:
+  Enabled: false
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+Lint/DeprecatedClassMethods:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Performance/Casecmp:
+  Enabled: false
+Performance/Count:
+  Enabled: false
+Performance/RedundantMerge:
+  Enabled: false
+Performance/StringReplacement:
+  Enabled: false
+Performance/TimesMap:
+  Enabled: false
+
+
+
+################
+# Enabled cops #
+################
+
+Style/EmptyLines:
+  Enabled: true
+Style/TrailingWhitespace:
+  Enabled: true
+Style/SpaceBeforeBlockBraces:
+  Enabled: true
+Style/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+Style/SpaceAfterComma:
+  Enabled: true
+Style/SpaceBeforeFirstArg:
+  Enabled: true
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: true
+Style/SpaceAroundOperators:
+  Enabled: true
+Style/SpaceInsideParens:
+  Enabled: true
+Style/LeadingCommentSpace:
+  Enabled: true
+Style/EmptyLineBetweenDefs:
+  Enabled: true
+Style/IndentationConsistency:
+  Enabled: true
+Style/IndentationWidth:
+  Enabled: true
+Style/BlockEndNewline:
+  Enabled: true
+Style/EmptyLinesAroundAccessModifier:
+  Enabled: true
+Style/TrailingCommaInLiteral:
+  Enabled: true
+Style/MethodDefParentheses:
+  Enabled: true
+Style/DefWithParentheses:
+  Enabled: true
+Style/AlignArray:
+  Enabled: true
+Style/AlignParameters:
+  Enabled: true
+Style/BracesAroundHashParameters:
+  Enabled: true
+Style/SpaceBeforeFirstArg:
+  Enabled: true
+Style/Tab:
+  Enabled: true
+Style/VariableInterpolation:
+  Enabled: true
+Style/WhileUntilModifier:
+  Enabled: true
+Style/SpaceInsideRangeLiteral:
+  Enabled: true
+Style/SpaceAroundKeyword:
+  Enabled: true
+Style/SpaceBeforeSemicolon:
+  Enabled: true
+Style/SpaceBeforeComment:
+  Enabled: true
+Style/SpaceBeforeComma:
+  Enabled: true
+Style/SpaceAfterNot:
+  Enabled: true
+Style/OneLineConditional:
+  Enabled: true
+Style/PercentQLiterals:
+  Enabled: true
+Style/Attr:
+  Enabled: true
+Style/BarePercentLiterals:
+  Enabled: true
+Style/ConstantName:
+  Enabled: true
+Style/EvenOdd:
+  Enabled: true
+Style/SpaceAfterMethodName:
+  Enabled: true
+Style/SpaceAfterSemicolon:
+  Enabled: true
+Style/NegatedWhile:
+  Enabled: true
+Style/HashSyntax:
+  Enabled: true
+Style/AlignHash:
+  Enabled: true
+Style/DotPosition:
+  Enabled: true
+Style/ExtraSpacing:
+  Enabled: true
+Style/InitialIndentation:
+  Enabled: true
+Style/ClassMethods:
+  Enabled: true
+Style/TrailingBlankLines:
+  Enabled: true
+Style/InitialIndentation:
+  Enabled: true
+Style/MultilineMethodDefinitionBraceLayout:
+  Enabled: true
+Style/NestedModifier:
+  Enabled: true
+Style/RedundantException:
+  Enabled: true
+Style/RescueEnsureAlignment:
+  Enabled: true
+Style/SpaceAfterColon:
+  Enabled: true
+Style/SpaceInsideArrayPercentLiteral:
+  Enabled: true
+Style/SymbolLiteral:
+  Enabled: true
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: brackets
+Style/WordArray:
+  Enabled: true
+  EnforcedStyle: brackets
+Lint/StringConversionInInterpolation:
+  Enabled: true
+Lint/DefEndAlignment:
+  Enabled: true
+Lint/PercentStringArray:
+  Enabled: true
+
+Performance/Detect:
+  Enabled: true
+Performance/DoubleStartEndWith:
+  Enabled: true
+Performance/Sample:
+  Enabled: true
+
+
+
+#########################
+# Changed configuration #
+#########################
+
+AccessModifierIndentation:
+  Enabled: false
+  EnforcedStyle: outdent
+
+MethodDefParentheses:
+  EnforcedStyle: require_parentheses
+
+SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+staged_files=$(git diff --cached --name-only --diff-filter=ACM)
+crane run carchain-precommit misc/bin/check_files.rb $staged_files && \
+crane run carchain-precommit bundle exec rspec
