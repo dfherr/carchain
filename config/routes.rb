@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     unlocks: 'users/unlocks'
   }
 
+  namespace :car do
+    get '/registration', to: 'registration#index'
+    get '/registration/register', to: 'registration#register'
+  end
+
   scope :ethereum do
     get '/register_car', to: 'ethereum#register_car'
   end
