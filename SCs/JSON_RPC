@@ -1,0 +1,32 @@
+Some usefull JSON-RPC calls
+
+______________________________________________________________________
+eth_getStorageAt 
+https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_getstorageat
+Returns the value from a storage position at a given address.
+
+//0x295a70b2de5e3953354a6a8344e616ed314d7251 is address of ontract
+Request
+#curl -X POST --data '{"jsonrpc":"2.0", "method": "eth_getStorageAt", "params": ["0x295a70b2de5e3953354a6a8344e616ed314d7251", "0x0", "latest"], "id": 1}' localhost:8545
+Result
+#{"jsonrpc":"2.0","id":1,"result":"0x00000000000000000000000000000000000000000000000000000000000004d2"}
+
+______________________________________________________________________
+eth_call
+https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_call
+Executes a new message call immediately without creating a transaction on the block chain.
+
+// Request
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params":[{Ethereum Contract ABI below}],"id":1}'
+
+// Result
+{
+  "id":1,
+  "jsonrpc": "2.0",
+  "result": "0x"
+}
+
+Ethereum Contract ABI
+https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI
+
+______________________________________________________________________
