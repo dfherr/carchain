@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   namespace :car do
     get '/registration', to: 'registration#index'
     get '/registration/register', to: 'registration#register'
+    get '/registration/end_registration', to: 'registration#end_registration'
+    get '/registration/change_registration', to: 'registration#change_registration'
   end
 
   scope :ethereum do

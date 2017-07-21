@@ -4,3 +4,5 @@
 #   http_host: 'example.org',
 #   https: false
 # )
+
+Rails.application.config.assets.precompile += ['register.css']
