@@ -12,16 +12,10 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">KFZ Verwaltung<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li> <%= link_to "KFZ Übersicht", car_registration_path %></li>
-            <li> <%= link_to "KFZ Anmelden", car_registration_register_path %></li>
-          </ul>
-        </li>
-        <li>
-          <a class="active" href="#">Test</a>
-        </li>
+        <li> <%= link_to "KFZ Übersicht", car_registration_path %></li>
+        <li> <%= link_to "KFZ Anmelden", car_registration_register_path %></li>
+        <li> <%= link_to "KFZ Abmelden", car_registration_end_registration_path %></li>
+        <li> <%= link_to "KFZ Ummelden", car_registration_change_registration_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
