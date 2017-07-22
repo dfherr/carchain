@@ -27,7 +27,7 @@ contract carRegistration{
     string public licenseTag;
     string public brand;
     string public model;
-    uint public color;
+    string public color;
     uint public yearBuilt;
 
     //information of registration
@@ -46,7 +46,7 @@ contract carRegistration{
         string _licenseTag,
         string _brand,
         string _model,
-        uint _color,
+        string _color,
         uint _yearBuilt
         ){
         //=> address public owner;
