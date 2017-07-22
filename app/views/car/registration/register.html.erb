@@ -1,20 +1,107 @@
-<div class="container">
-  <div class="">
-    <div>
-      <h1>
-        Melden Sie ihr KFZ hier an
-      </h1>
-      <form>
-        <p>
-          Laden Sie einen Scan Ihres Fahrzeugbriefs hoch
-        </p>
-        <input label="perso" type=file accept="image/*">
-        <p>
-          Zu welchen Datum wollen Sie ihr Fahrzeug anmelden?
-        </p>
-        <input label="zulassungsdatum" type=date>
-        <input type="submit" value="Antrag abschicken" />
-      </form>
+<div class="well col-lg-12">
+<div class="col-lg-6">
+  <h2>
+    Anleitung
+  </h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">So funktionierts...</h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        1. Suchen Sie alle nötigen Dokumente zusammen:
+        <ul>
+          <li>
+            EG-Übereinstimmungsbescheinigung (COC-Bescheinigung)
+          </li>
+          <li>
+            Elektronische Versicherungsbestätigung (eVB)
+          </li>
+          <li>
+            Fahrzeugbrief/Zulassungsbescheinigung Teil II
+          </li>
+          <li>
+            Fahrzeugschein/Zulassungsbescheinigung Teil I
+          </li>
+          <li>
+            HU-Bericht
+          </li>
+        </ul>
+      </p>
+      <p>
+        2. Scannen Sie die Dokumente als PDF ein und laden Sie diese an den entsprechenden Stellen im Antrag hoch
+      </p>
+      <p>
+        3. Füllen Sie die Felder aus
+      </p>
+      <p>
+        4. Versichern Sie sich, dass alle Felder korrekt ausgefüllt sind
+      </p>
+      <p>
+        5. Schicken Sie den Antrag ab
+      </p>
+      <p>
+        6. Sie werden bald über den weiteren Verlauf Ihres Antrags informiert
+      </p>
     </div>
   </div>
+</div>
+<div class="col-lg-6">
+  <h2>
+    Antrag
+  </h2>
+<form class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-3 control-label">KFZ Nummer</label>
+      <div class="col-lg-9">
+        <input type="number" class="form-control" id="inputEmail" placeholder="KFZ Nummer">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-3 control-label" required="">Anmerkungen</label>
+      <div class="col-lg-9">
+        <textarea class="form-control" rows="3" id="textArea"></textarea>
+        <span class="help-block">Hier können Sie Anmerkungen schreiben, die für die Anmeldung relevant sein könnten.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-3 control-label">Upload</label>
+      <div class="col-lg-9 vcenter" style="padding-top: 25px;">
+        <ol>
+          <li>
+            EG-Übereinstimmungsbescheinigung (COC-Bescheinigung)
+            <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+          </li>
+          <li>
+            Elektronische Versicherungsbestätigung (eVB)
+            <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+          </li>
+          <li>
+            Fahrzeugbrief/Zulassungsbescheinigung Teil II
+            <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+          </li>
+          <li>
+            Fahrzeugschein/Zulassungsbescheinigung Teil I
+            <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+          </li>
+          <li>
+            HU-Bericht
+            <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+          </li>
+        </ol>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-offset-1 col-log-9">
+        <button type="reset" class="btn btn-danger">Abbrechen</button>
+        <button type="submit" class="btn btn-primary">Abschicken</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+</div>
+
 </div>
