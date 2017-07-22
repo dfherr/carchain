@@ -1,3 +1,15 @@
 #bootstrap-mod h1{
-  color:black;
+  color: black;
+}
+#bootstrap-mod p{
+     color: black;
+ }
+
+#bootstrap-mod .col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.table tbody > tr > td.vert-aligned {
+    vertical-aligned: middle;
 }
