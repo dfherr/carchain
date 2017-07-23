@@ -5,7 +5,7 @@ failures = false
 ruby_files = ARGV.grep(/\.rb$|\.ru$|\.rake$|\.gemspec$|Rakefile$|Gemfile$|Capfile$/)
 if ruby_files.any?
   puts "### RUBY ###"
-  unless system("bin/rubocop --auto-correct --fail-level autocorrect #{ruby_files.join(' ')}")
+  unless system("bin/rubocop --force-exclusion --auto-correct --fail-level autocorrect #{ruby_files.join(' ')}")
     failures = true
   end
   puts ""
