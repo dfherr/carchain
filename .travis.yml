@@ -1,6 +1,8 @@
 language: ruby
 dist: trusty
 cache: bundler
+services:
+  - postgresql
 rvm:
   - 2.4.1
 branches:
@@ -11,4 +13,6 @@ jobs:
     - stage: rubocop
       script: "bundle exec rubocop"
     - stage: rspec
+      before_script:
+        - psql -c 'create database carchain_test;' -U postgres
       script: "bundle exec rspec"
