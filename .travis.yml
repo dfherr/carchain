@@ -1,4 +1,5 @@
 language: ruby
+dist: trusty
 script: "bundle exec rspec"
 rvm:
   - 2.4.1
