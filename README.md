@@ -3,15 +3,17 @@
 [![Build Status](https://travis-ci.org/blc-psi/carchain.svg?branch=master)](https://travis-ci.org/blc-psi/carchain)
 [![Coverage Status](https://img.shields.io/coveralls/blc-psi/carchain.svg)](https://coveralls.io/github/blc-psi/carchain)
 
-#### A Rails application for managing car-registration with Ethereum
+### A Rails application for managing car-registration with Ethereum
 
 
 ## Usage
 
 This is a sub-project of [carchain-env](https://github.com/blc-psi/carchain-env), which provides
 [crane](https://github.com/michaelsauter/crane) configuration files for booting all necessary
-services using docker: the carchain application, a postgres database for use with carchain and
-three Proof of Authority Ethereum nodes using parity.
+services using docker:
+* the carchain application
+* a postgres database for use with carchain
+* three Proof of Authority Ethereum nodes using parity
 
 
 ## License
