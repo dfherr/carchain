@@ -1,9 +1,10 @@
 # Carchain
-## A Rails application for managing car-registration with Ethereum
-
 
 [![Build Status](https://travis-ci.org/blc-psi/carchain.svg?branch=master)](https://travis-ci.org/blc-psi/carchain)
 [![Coverage Status](https://img.shields.io/coveralls/blc-psi/carchain.svg)](https://coveralls.io/github/blc-psi/carchain)
+
+#### A Rails application for managing car-registration with Ethereum
+
 
 ## Usage
 
