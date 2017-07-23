@@ -25,6 +25,9 @@
           <li <%= "class=active" if current_page?(car_registration_change_registration_path) %>>
             <%= link_to "KFZ Ummelden", car_registration_change_registration_path %>
           </li>
+          <li <%= "class=active" if current_page?(car_registration_search_for_registration_path) %>>
+            <%= link_to "Versicherung", car_registration_search_for_registration_path %>
+          </li>
         </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
