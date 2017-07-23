@@ -8,6 +8,8 @@ AllCops:
     - db/**/*
     - misc/**/*
     - config.ru
+    - vendor/**/*
+    - config/spring.rb
 
 Metrics/LineLength:
   Max: 120

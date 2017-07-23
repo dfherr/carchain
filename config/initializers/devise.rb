@@ -6,7 +6,9 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
+  # rubocop:disable LineLength
   # config.secret_key = 'ef8787763e2b5633b9f1d7596be3b67a40d16c385a1a2682904c81c3a029c1651e5efef929cbab37180a50ea7cbafba504d8d958c0960d676e21991eda3314fb'
+  # rubocop:enable LineLength
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -108,13 +110,15 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '1ecd1161aaf6a6e13bdb8857544c158bff3e81a44c6462794421c259b066a22471f24b0cae838e8d43c0c9bbba0f52f4e87af052d6c0f69479697c1cde80b6e9'
+  # rubocop:disable LineLength
+  config.pepper = '1ecd1161aaf6a6e13bdb8857544c158bff3e81a44c6462794421c259b066a22471f24b0cae838e8d43c0c9bbba0f52f4e87af052d6c0f69479697c1cde80b6e9'
+  # rubocop:enable LineLength
 
   # Send a notification to the original email when the user's email is changed.
-  # config.send_email_changed_notification = false
+  config.send_email_changed_notification = true
 
   # Send a notification email when the user's password is changed.
-  # config.send_password_change_notification = false
+  config.send_password_change_notification = true
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
