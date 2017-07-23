@@ -15,14 +15,14 @@
   <div class="form-group">
     <%= f.label :firstname, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.email_field :firstname, class: "form-control", placeholder: "Your firstname" %>
+      <%= f.text_field :firstname, class: "form-control", placeholder: "Your firstname" %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :lastname, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.email_field :lastname, class: "form-control", placeholder: "Your lastname" %>
+      <%= f.text_field :lastname, class: "form-control", placeholder: "Your lastname" %>
     </div>
   </div>
 
@@ -40,7 +40,7 @@
   <div class="form-group">
     <%= f.label :password_confirmation, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.email_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm password" %>
     </div>
   </div>
   <div class="form-group">
