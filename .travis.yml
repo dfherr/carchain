@@ -1,0 +1,7 @@
+language: ruby
+script: "bundle exec rspec"
+rvm:
+  - 2.4.1
+branches:
+  only:
+    - master
