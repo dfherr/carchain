@@ -1,4 +1,5 @@
-# Carchain - A Rails application for managing car-registration with Ethereum
+# Carchain
+## A Rails application for managing car-registration with Ethereum
 
 
 [![Build Status](https://travis-ci.org/blc-psi/carchain.svg?branch=master)](https://travis-ci.org/blc-psi/carchain)
