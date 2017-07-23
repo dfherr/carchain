@@ -52,6 +52,7 @@ body {
 #nav-footer {
   min-height: 40px;
   margin-bottom: 0px;
+  background-color: #f8f5f0;
 }
 
 #nav-footer li > a{
