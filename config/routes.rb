@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "home#index"
+  get "/imprint", to: "home#imprint"
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
@@ -10,6 +11,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     unlocks: 'users/unlocks'
   }
+
+  namespace :users do
+    get '/roles', to: 'roles#index'
+    get '/roles/manage/:id', to: 'roles#manage', as: "roles_manage"
+    delete '/roles/manage/:id/:role_id', to: 'roles#destroy', as: "roles_destroy"
+  end
 
   namespace :car do
     get '/registration', to: 'registration#index'

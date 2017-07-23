@@ -23,7 +23,6 @@
       <%= render partial: "/layouts/navbar"%>
       <div class="">
         <% if alert %>
-          <p class="notice"><%= notice %></p>
           <div class="alert alert-danger alert-dismissable">
              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <%= alert %>
@@ -35,10 +34,30 @@
             <%= notice %>
           </div>
         <% end %>
+        <% if flash[:success] %>
+          <div class="alert alert-success alert-dismissable">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= flash[:success] %>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"  crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
+
+  <footer class="footer">
+    <div class="container">
+      <nav id="nav-footer" class="navbar-default">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to "Impressum", imprint_path %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+   </footer>
 </html>

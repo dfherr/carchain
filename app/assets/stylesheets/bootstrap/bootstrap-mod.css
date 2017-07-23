@@ -35,6 +35,39 @@
     margin-top:15px;
 }
 
-#bootstrap-mod .col-center{
-    margin:0 auto;
+#bootstrap-mod .col-center {
+    margin: 0 auto;
+}
+
+.navbar .nav > li > a {
+  font-size: 12px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+}
+
+#nav-footer {
+  min-height: 40px;
+  margin-bottom: 0px;
+  background-color: #f8f5f0;
+}
+
+#nav-footer li > a{
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
