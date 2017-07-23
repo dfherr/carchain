@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     unlocks: 'users/unlocks'
   }
 
+  namespace :users do
+    get '/roles', to: 'roles#index'
+    get '/roles/manage/:id', to: 'roles#manage', as: "roles_manage"
+  end
+
   namespace :car do
     get '/registration', to: 'registration#index'
     get '/registration/register', to: 'registration#register'

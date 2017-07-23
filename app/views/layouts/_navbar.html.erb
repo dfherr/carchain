@@ -20,6 +20,11 @@
         </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
+        <% if can? :manage, Users %>
+        <li>
+          <%= link_to "Manage roles", users_roles_path %>
+        </li>
+        <% end %>
         <% if user_signed_in? %>
             <li>
               <%= link_to current_user.email, edit_user_registration_path %>

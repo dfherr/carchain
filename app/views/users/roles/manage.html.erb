@@ -1,0 +1,24 @@
+<div class="col-md-12 well">
+  <div class="col-md-6">
+    <h2>
+      Manage user #<%= @user.id %> roles:
+    </h2>
+    <div class="col-md-6">
+      <p>
+          E-Mail: <%= @user.email %>
+      </p>
+      <p>
+        Firstname: <%= @user.firstname %>
+      </p>
+      <p>
+        Lastname: <%= @user.lastname %>
+      </p>
+    </div>
+
+    <% @user.roles.each do |role| %>
+      <div class="col-md-6">
+        <%= role.name %>
+      </div>
+    <% end %>
+  </div>
+</div>

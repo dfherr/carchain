@@ -1,0 +1,35 @@
+<div class="col-md-12 well">
+<h2>
+  User management
+</h2>
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>E-Mail</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Roles</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.email %></td>
+      <td><%= user.firstname %></td>
+      <td><%= user.lastname %></td>
+      <td>
+        <% user.roles.each do |role| %>
+          <%= role.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Manage roles", users_roles_manage_path(user), class: "btn btn-sm btn-primary" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
