@@ -23,6 +23,18 @@
     margin: 0 auto;
 }
 
+#bootstrap-mod .vertical-center {
+    display: flex;
+    align-items: center;
+}
 .table tbody > tr > td.vert-aligned {
     vertical-aligned: middle;
+}
+
+#bootstrap-mod .top-buffer {
+    margin-top:15px;
+}
+
+#bootstrap-mod .col-center{
+    margin:0 auto;
 }
