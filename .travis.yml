@@ -1,8 +1,13 @@
 language: ruby
 dist: trusty
-script: "bundle exec rspec"
 rvm:
   - 2.4.1
 branches:
   only:
     - master
+jobs:
+  include:
+    - stage: rubocop
+      script: "bundle exec rubocop"
+    - stage: rspec
+      script: "bundle exec rspec"
