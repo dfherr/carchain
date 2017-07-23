@@ -6,6 +6,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [SimpleCov::Formatter::HTMLFormatter,
    Coveralls::SimpleCov::Formatter]
 )
+Coveralls.wear!
 
 SimpleCov.start 'rails' do
   add_filter ".bundle/"
