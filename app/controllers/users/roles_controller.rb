@@ -2,7 +2,7 @@ class Users::RolesController < ApplicationController
   # GET /users
   def index
     authorize! :manage, User
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   # GET /users/manage
