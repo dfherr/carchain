@@ -1,7 +1,12 @@
 require 'simplecov'
 require 'awesome_print'
+require 'coveralls'
 
-SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [SimpleCov::Formatter::HTMLFormatter,
+   Coveralls::SimpleCov::Formatter]
+)
+
 SimpleCov.start 'rails' do
   add_filter ".bundle/"
   add_filter "vendor/"
