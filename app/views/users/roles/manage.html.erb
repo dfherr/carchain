@@ -5,7 +5,7 @@
     </h2>
     <div class="col-md-6">
       <p>
-          E-Mail: <%= @user.email %>
+        E-Mail: <%= @user.email %>
       </p>
       <p>
         Firstname: <%= @user.firstname %>
@@ -14,11 +14,26 @@
         Lastname: <%= @user.lastname %>
       </p>
     </div>
-
-    <% @user.roles.each do |role| %>
-      <div class="col-md-6">
-        <%= role.name %>
-      </div>
-    <% end %>
+    <h4>
+      User roles:
+    </h4>
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Role</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @user.roles.each do |role| %>
+        <tr>
+          <td><%= role.name %></td>
+          <td>
+            <%= link_to "X", users_roles_destroy_path(@user, role), class: "btn btn-sm btn-danger", method: :delete, data:{comfirm: 'Are you sure?'} %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

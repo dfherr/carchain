@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :users do
     get '/roles', to: 'roles#index'
     get '/roles/manage/:id', to: 'roles#manage', as: "roles_manage"
+    delete '/roles/manage/:id/:role_id', to: 'roles#destroy', as: "roles_destroy"
   end
 
   namespace :car do

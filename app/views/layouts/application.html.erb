@@ -23,7 +23,6 @@
       <%= render partial: "/layouts/navbar"%>
       <div class="">
         <% if alert %>
-          <p class="notice"><%= notice %></p>
           <div class="alert alert-danger alert-dismissable">
              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <%= alert %>
@@ -33,6 +32,12 @@
           <div class="alert alert-warning alert-dismissable">
              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <%= notice %>
+          </div>
+        <% end %>
+        <% if flash[:success] %>
+          <div class="alert alert-success alert-dismissable">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%= flash[:success] %>
           </div>
         <% end %>
         <%= yield %>
