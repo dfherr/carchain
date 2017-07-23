@@ -1,26 +1,49 @@
-<h2>Log in</h2>
+<div class="well col-md-12">
+  <div class="col-md-6">
+    <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email, class: "col-md-3 control-label" %>
+        <div class="col-md-9">
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "deine@email.de" %>
+        </div>
+      </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="form-group">
+        <%= f.label :password, class: "col-md-3 control-label" %>
+        <div class="col-md-9">
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Dein Passwort" %>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="form-group">
+          <div class="col-md-offset-3 col-md-1">
+            <%= f.check_box :remember_me %>
+          </div>
+          <div>
+          </div class="col-md-8">
+            <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+          <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+        </div>
+      </div>
+    <% end %>
+
+    <%- if devise_mapping.registerable? %>
+      <div class="col-md-offset-3 col-md-9">
+        <%= link_to "Create new account", new_registration_path(resource_name), class: "btn btn-success btn-block" %>
+      </div>
+    <% end -%>
+    <div class="col-md-12">
+      <p></p>
+      <%= render "users/shared/links" %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

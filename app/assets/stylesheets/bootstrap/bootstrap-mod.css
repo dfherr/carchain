@@ -7,6 +7,10 @@
   hyphens: auto;
 }
 
+#bootstrap-mod input[type=checkbox] {
+    margin: 1px 0 0;
+}
+
 #bootstrap-mod h1{
   color: black;
 }
