@@ -8,21 +8,21 @@
   <div class="form-group">
     <%= f.label :email, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "your@email.com" %>
+      <%= f.email_field :email, required: true, autofocus: true, class: "form-control", placeholder: "your@email.com" %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :firstname, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.text_field :firstname, class: "form-control", placeholder: "Your firstname" %>
+      <%= f.text_field :firstname, required: true,  class: "form-control", placeholder: "Your firstname" %>
     </div>
   </div>
 
   <div class="form-group">
     <%= f.label :lastname, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.text_field :lastname, class: "form-control", placeholder: "Your lastname" %>
+      <%= f.text_field :lastname, required: true,  class: "form-control", placeholder: "Your lastname" %>
     </div>
   </div>
 
@@ -30,7 +30,7 @@
     <%= f.label :password, class: "col-md-3 control-label" %>
     <div class="col-md-9">
       <p>
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Secure password" %>
+        <%= f.password_field :password, required: true,  autocomplete: "off", class: "form-control", placeholder: "Secure password" %>
       <p/>
       <% if @minimum_password_length %>
         <p class="help-block">(<%= @minimum_password_length %> characters minimum)</p>
@@ -40,7 +40,7 @@
   <div class="form-group">
     <%= f.label :password_confirmation, class: "col-md-3 control-label" %>
     <div class="col-md-9">
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm password" %>
+      <%= f.password_field :password_confirmation, required: true,  autocomplete: "off", class: "form-control", placeholder: "Confirm password" %>
     </div>
   </div>
   <div class="form-group">
