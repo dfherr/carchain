@@ -15,4 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # shouldn't be necessary as it's included in application.css
 # Rails.application.config.assets.precompile += %w( bootstrap/bootstrap-mod.css )
 
-Rails.application.config.assets.precompile += %w(*.png)
+Rails.application.config.assets.precompile += ['*.png']
