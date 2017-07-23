@@ -13,4 +13,7 @@ three Proof of Authority Ethereum nodes using parity.
 
 
 ## License
+
 [MIT](https://github.com/blc-psi/carchain/blob/master/LICENSE)
+
+Copyright (c) 2017 Dennis-Florian Herr, Franz Schneider, Matthias Mark
