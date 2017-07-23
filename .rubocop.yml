@@ -55,6 +55,8 @@ Style/RedundantSelf:
   Enabled: false
 Style/RegexpLiteral:
   Enabled: false
+Style/SymbolProc:
+  Enabled: false
 
 Lint/BlockAlignment:
   Enabled: false

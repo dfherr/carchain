@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :car_registration, class: 'Car::Registration' do
+  end
+  factory :role do
+  end
+
   factory :user do
     email "test@test.test"
     password "secretpassword"

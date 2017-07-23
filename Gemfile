@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'devise'
+gem 'cancancan', '~> 2.0.0'
+gem 'devise', '~> 4.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use postgresql as the database for Active Record
@@ -18,6 +19,7 @@ gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.1'
 
 gem 'rest-client', '~> 2.0.2'
+gem "rolify", '~> 5.1.0'
 # therubyracer javascript runtime to run uglifier
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby

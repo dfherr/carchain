@@ -1,9 +1,15 @@
 module Car
   class RegistrationController < ApplicationController
-    def register; end
+    def register
+      authorize! :manage, Registration
+    end
 
-    def end_registration; end
+    def end_registration
+      authorize! :manage, Registration
+    end
 
-    def change_registration; end
+    def change_registration
+      authorize! :manage, Registration
+    end
   end
 end
