@@ -7,14 +7,14 @@
       <div class="form-group">
         <%= f.label :email, class: "col-md-3 control-label" %>
         <div class="col-md-9">
-          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "deine@email.de" %>
+          <%= f.email_field :email, required: true,  autofocus: true, class: "form-control", placeholder: "deine@email.de" %>
         </div>
       </div>
 
       <div class="form-group">
         <%= f.label :password, class: "col-md-3 control-label" %>
         <div class="col-md-9">
-          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Dein Passwort" %>
+          <%= f.password_field :password, required: true,  autocomplete: "off", class: "form-control", placeholder: "Dein Passwort" %>
         </div>
       </div>
 

@@ -11,6 +11,21 @@ class Users::RolesController < ApplicationController
     authorize! :manage, @user
   end
 
+  def add
+    user = User.find(params[:id])
+    authorize! :manage, user
+    role_name = params[:user][:roles][:name].to_sym
+    if user.has_role? role_name
+      flash[:notice] = "User ##{user.id} already has role #{role_name}."
+    elsif user.add_role role_name
+      flash[:success] = "Role #{role_name} added to user ##{user.id}"
+    else
+      flash[:alert] = "Could not add role #{role_name} to user ##{user.id}"
+    end
+
+    redirect_to users_roles_manage_url
+  end
+
   def destroy
     user = User.find(params[:id])
     authorize! :manage, user
