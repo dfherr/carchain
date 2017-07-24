@@ -71,10 +71,20 @@
   <footer class="footer">
     <div class="container">
       <nav id="nav-footer" class="navbar-default">
-        <div class="container">
+        <div class="container-fluid">
           <ul class="nav navbar-nav">
             <li>
-              <%= link_to "Impressum", imprint_path %>
+              <%= link_to _("Imprint"), imprint_path %>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropup">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"> <span class="caret"></span><%= _("Language") %></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><%= link_to _("German"), change_locale_path('de'), method: :put %></li>
+                <li class="divider"></li>
+                <li><%= link_to _("English"), change_locale_path('en'), method: :put %></li>
+              </ul>
             </li>
           </ul>
         </div>

@@ -14,15 +14,18 @@ class Users::RolesController < ApplicationController
   def add
     user = User.find(params[:id])
     authorize! :manage, user
+    if params[:user][:roles][:name].empty?
+      flash[:alert] = _("Role may not be empty!")
+      redirect_to users_roles_manage_url
+    end
     role_name = params[:user][:roles][:name].to_sym
     if user.has_role? role_name
-      flash[:notice] = "User ##{user.id} already has role #{role_name}."
+      flash[:notice] = _("User #%{user} already has role %{role}.") % { user: user.id, role: role_name }
     elsif user.add_role role_name
-      flash[:success] = "Role #{role_name} added to user ##{user.id}"
+      flash[:success] = _("Role %{role} added to user #%{user}") % { user: user.id, role: role_name }
     else
-      flash[:alert] = "Could not add role #{role_name} to user ##{user.id}"
+      flash[:alert] = _("Could not add role %{role} to user #%{user}") % { user: user.id, role: role_name }
     end
-
     redirect_to users_roles_manage_url
   end
 
@@ -35,12 +38,12 @@ class Users::RolesController < ApplicationController
       if user.roles.destroy(role)
         if old_ability.can?(:manage, user) && Ability.new(user).cannot?(:manage, user)
           user.add_role role.name.to_sym
-          flash[:alert] = "You can't remove that role, because user could no longer manage roles."
+          flash[:alert] = _("You can't remove that role, because the user could no longer manage roles.")
         else
-          flash[:success] = "Role #{role.name} removed from user ##{user.id}"
+          flash[:success] = _("Role %{role} removed from user #%{user}") % { user: user.id, role: role.name }
         end
       else
-        flash[:alert] = "Could not remove role #{role.name} from user ##{user.id}"
+        flash[:alert] = _("Could not remove role %{role} from user #%{user}") % { user: user.id, role: role.name }
       end
     end
     redirect_to users_roles_manage_url
