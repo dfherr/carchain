@@ -25,7 +25,7 @@ contract carRegistration{
     
     //information of car
     string public licenseTag;           //Kennzeichen
-    string public vehivleNumber;        //Fahrzeugnummer 
+    string public vehicleNumber;        //Fahrzeugnummer 
     byte public hashCOC;                //EG-UebereinstimmungsbescheinigungE
     byte public hashEVB;                //elektronische Versicherungsbestaetigung
     byte public hashVehicleCertificate; //Fahrzeugschein/Zulassungsbescheinigung Teil 1
@@ -46,7 +46,7 @@ contract carRegistration{
         string _ownerBirthday,
         //information of car
         string _licenseTag,             //Kennzeichen
-        string _vehivleNumber,          //Fahrzeugnummer 
+        string _vehicleNumber,          //Fahrzeugnummer 
         byte _hashCOC,                  //EG-UebereinstimmungsbescheinigungE
         byte _hashEVB,                  //elektronische Versicherungsbestaetigung
         byte _hashVehicleCertificate,   //Fahrzeugschein/Zulassungsbescheinigung Teil 1
@@ -61,7 +61,7 @@ contract carRegistration{
 
         //information of car
         licenseTag = _licenseTag;
-        vehivleNumber =_vehivleNumber;
+        vehicleNumber =_vehicleNumber;
         hashCOC =_hashCOC;
         hashEVB = _hashEVB;
         hashVehicleCertificate = _hashVehicleCertificate;   
