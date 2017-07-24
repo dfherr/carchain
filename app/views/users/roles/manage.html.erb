@@ -33,7 +33,7 @@
           <tr>
             <td><%= role.name %></td>
             <td>
-              <%= link_to "X", users_roles_destroy_path(@user, role), class: "btn btn-sm btn-danger", method: :delete, data:{comfirm: 'Are you sure?'} %>
+              <%= link_to "X", users_roles_destroy_path(@user, role), class: "btn btn-sm btn-danger", method: :delete, data: { comfirm: 'Are you sure?' } %>
             </td>
           </tr>
           <% end %>

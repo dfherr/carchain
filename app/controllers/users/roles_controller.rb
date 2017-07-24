@@ -14,12 +14,10 @@ class Users::RolesController < ApplicationController
   def add
     user = User.find(params[:id])
     authorize! :manage, user
-    if params[:user][:roles][:name].empty?
+    role_name = params[:user][:roles][:name].strip.gsub(/(_|\s)+/, "_")
+    if role_name.empty?
       flash[:alert] = _("Role may not be empty!")
-      redirect_to users_roles_manage_url
-    end
-    role_name = params[:user][:roles][:name].to_sym
-    if user.has_role? role_name
+    elsif user.has_role? role_name
       flash[:notice] = _("User #%{user} already has role %{role}.") % { user: user.id, role: role_name }
     elsif user.add_role role_name
       flash[:success] = _("Role %{role} added to user #%{user}") % { user: user.id, role: role_name }

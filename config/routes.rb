@@ -31,6 +31,6 @@ Rails.application.routes.draw do
   end
 
   scope :ethereum do
-    get '/register_car', to: 'ethereum#register_car'
+    get '/web3_client_version', to: 'ethereum#web3_client_version'
   end
 end

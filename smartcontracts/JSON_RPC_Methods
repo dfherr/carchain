@@ -1,0 +1,33 @@
+Methods
+
+!! Change fields accordingly!!
+AccountAdress:		0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9
+ContractAddress: 	0x19E1626BC4d86a196b464797Eab9713a05719012
+
+eth_call-calls
+_________________________________________________________________________________________________________________________________
+getOwnerData(): 		0xe4b85399e315fa8d1cc43ddf9ad5adb58165ddd9e6bc590eb5ce3e5776442594 -> 0xe4b85399
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0xe4b85399"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+getState():				0x1865c57dc1ec44b2b49053047977a25c818fe96484d77000dc1fb86190a36770 -> 0x1865c57d
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x1865c57d"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+setStateSubmitted(): 	0x36a72c48f5331f3feeb6e29b11fd37b17a053eece5caf68f10c25f0f924d200a -> 0x36a72c48
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x36a72c48"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+setStateIncomplete():	0x1b3895a296368016d675a967b8b2eadb2419004011a428a835aa432a676ffae5 -> 0x1b3895a2
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x1b3895a2"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+setStateAccepted():		0x4be9c0c5d869fbfb469e6f0a90153aaf582ccfd2742ade748bb6373a5ed923a7 -> 0x4be9c0c5
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x4be9c0c5"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+setStateDeclined():		0x13cd7a910a4d5ec4e7df2b6a11281d33a14b9c7a92a09990d67b44043f94f117 -> 0x13cd7a91
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x13cd7a91"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+setStateCanceled():		0x0ea3be5b09321e5fa8de32663c7d4b8c87c1f96dc90e9b9fcd546c110a8ab42f -> 0x0ea3be5b
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x0ea3be5b"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+
+_________________________________________________________________________________________________________________________________
+
+_________________________________________________________________________________________________________________________________

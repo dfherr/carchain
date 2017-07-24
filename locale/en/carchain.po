@@ -60,15 +60,23 @@ msgstr "Unregister car"
 msgid "Change car registration"
 msgstr "Change car registration"
 
-#: ../app/views/layouts/_navbar.html.erb:33
+#: ../app/views/layouts/_navbar.html.erb:29
+msgid "Insurance"
+msgstr "Insurance"
+
+#: ../app/views/layouts/_navbar.html.erb:32
+msgid "Police"
+msgstr "Police"
+
+#: ../app/views/layouts/_navbar.html.erb:39
 msgid "Manage roles"
 msgstr "Manage roles"
 
-#: ../app/views/layouts/_navbar.html.erb:41
+#: ../app/views/layouts/_navbar.html.erb:47
 msgid "Log out"
 msgstr "Log out"
 
-#: ../app/views/layouts/_navbar.html.erb:45
+#: ../app/views/layouts/_navbar.html.erb:41
 msgid "Log in"
 msgstr "Log in"
 

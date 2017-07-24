@@ -56,19 +56,23 @@ msgstr "KFZ Anmelden"
 msgid "Unregister car"
 msgstr "KFZ Abmelden"
 
-#: ../app/views/layouts/_navbar.html.erb:26
-msgid "Change car registration"
-msgstr "KFZ Ummelden"
+#: ../app/views/layouts/_navbar.html.erb:29
+msgid "Insurance"
+msgstr "Versicherung"
 
-#: ../app/views/layouts/_navbar.html.erb:33
+#: ../app/views/layouts/_navbar.html.erb:32
+msgid "Police"
+msgstr "Polizei"
+
+#: ../app/views/layouts/_navbar.html.erb:39
 msgid "Manage roles"
 msgstr "Rollen verwalten"
 
-#: ../app/views/layouts/_navbar.html.erb:41
+#: ../app/views/layouts/_navbar.html.erb:47
 msgid "Log out"
 msgstr "Ausloggen"
 
-#: ../app/views/layouts/_navbar.html.erb:45
+#: ../app/views/layouts/_navbar.html.erb:41
 msgid "Log in"
 msgstr "Einloggen"
 
