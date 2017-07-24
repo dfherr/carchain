@@ -28,9 +28,13 @@ Rails.application.routes.draw do
     get '/registration/change_registration', to: 'registration#change_registration'
     get '/registration/search_for_registration/', to: 'registration#search_for_registration'
     get '/registration/search_for_owner/', to: 'registration#search_for_owner'
+
+    post '/registration/register', to: 'registration#create_registration', as: 'create_registration'
   end
 
   scope :ethereum do
     get '/web3_client_version', to: 'ethereum#web3_client_version'
+    get '/owner_data/:contract', to: 'ethereum#owner_data'
+    get '/deploy_contract', to: 'ethereum#deploy_contract'
   end
 end
