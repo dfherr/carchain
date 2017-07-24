@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get '/registration/end_registration', to: 'registration#end_registration'
     get '/registration/change_registration', to: 'registration#change_registration'
     get '/registration/search_for_registration/', to: 'registration#search_for_registration'
+    get '/registration/search_for_owner/', to: 'registration#search_for_owner'
   end
 
   scope :ethereum do

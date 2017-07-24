@@ -1,0 +1,43 @@
+<div class="well">
+  <h2>
+    Suchen nach dem Status eines KFZ-Halters
+  </h2>
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>Halterdaten</legend>
+      <div class="form-group">
+        <label for="inputName" class="col-lg-2 control-label">Kennzeichen</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" placeholder="Kennzeichen">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-offset-1 col-lg-9 col-md-8">
+          <button type="reset" class="btn btn-danger">Abbrechen</button>
+          <button type="submit" class="btn btn-primary">Halterdaten anzeigen</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="row pagination-centered">
+    <div class="col-lg-4 col-lg-offset-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Halterdaten zu eingegebenen Kennzeichen</h3>
+        </div>
+        <div class="panel-body text-center">
+          <span class="row">
+            <%= image_tag ("002-boss.png"), size: 64 %>
+          </span>
+          <span class="row">Vorname: Max</span>
+          <span class="row">Nachname: Mustermann</span>
+          <span class="row text-center">Straße: Teststraße 17</span>
+          <span class="row text-center">Postleitzahl: 80805</span>
+          <span class="row text-center">Stadt: München</span>
+          <span class="row text-center">Perso-Nr: LG123456789</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
