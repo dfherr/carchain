@@ -37,6 +37,33 @@ class EthereumController < ApplicationController
     render json: json_resp.to_json
   end
 
+  def owner_name
+    contract = params[:contract]
+    data = {
+      method: "eth_call",
+      id: 1,
+      jsonrpc: "2.0",
+      params: [
+        {
+          to: contract,
+          data: "0x145ef6e9"
+        }
+      ]
+    }
+    resp = send_json_rpc_request(data)
+
+    json_resp = JSON.parse(resp.body)
+    puts "~~~~~~~~~~~~~~~~~\n\n"
+    puts json_resp.inspect
+    puts json_resp["result"]
+    puts json_resp["result"].sub(/^0x/, '')
+
+    json_resp["result"].sub(/^0x/, '').chars.each_slice(32).map(&:join).each_with_index do |part, i|
+      puts "#{i}: " + [part].pack('H*').force_encoding('utf-8').encode('utf-8')
+    end
+    render json: json_resp.to_json
+  end
+
   def deploy_contract
     contract = Ethereum::Contract.create(file: "smartcontracts/CarRegistration.sol")
     address = contract.deploy_and_wait("Hello from ethereum.rb!")
