@@ -24,12 +24,12 @@ contract carRegistration{
     string public ownerBirthday;
     
     //information of car
-    string public licenseTag;               //Kennzeichen
-    string public vehivleNumber;            //Fahrzeugnummer 
+    string public licenseTag;           //Kennzeichen
+    string public vehivleNumber;        //Fahrzeugnummer 
     byte public hashCOC;                //EG-UebereinstimmungsbescheinigungE
-    byte public hashEVB;                    //elektronische Versicherungsbestaetigung
+    byte public hashEVB;                //elektronische Versicherungsbestaetigung
     byte public hashVehicleCertificate; //Fahrzeugschein/Zulassungsbescheinigung Teil 1
-    byte public hashVehicleTitle;           //Fahrzeugbrief/Zulassungsbescheinigung Teil 2
+    byte public hashVehicleTitle;       //Fahrzeugbrief/Zulassungsbescheinigung Teil 2
     byte public hashHU;                 //HU-Bericht
     
     //information of registration
@@ -119,7 +119,7 @@ contract carRegistration{
     //usecase insurance
     //insurance checks state of the application
     //?should insurance also check owner or car details?
-    function getState() constant returns(State){
-      return state;
+    function getState() returns(State _state){
+        _state = state;
     }
 }
