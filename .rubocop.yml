@@ -57,6 +57,8 @@ Style/RegexpLiteral:
   Enabled: false
 Style/SymbolProc:
   Enabled: false
+Style/FormatString:
+  Enabled: false
 
 Lint/BlockAlignment:
   Enabled: false

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/imprint', to: 'home#imprint'
 
+  put '/change_locale/:locale', to: 'application#change_locale', as: 'change_locale'
+
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
     passwords: 'users/passwords',

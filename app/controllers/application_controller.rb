@@ -1,5 +1,21 @@
 class ApplicationController < ActionController::Base
+  include FastGettext::Translation
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:change_locale]
+
+  before_action :localize
+
+  def change_locale
+    locale = params[:locale]
+    cookies[:locale] = locale if FastGettext.available_locales.include? locale
+    redirect_back(fallback_location: root_path)
+  end
+
+  private
+
+  def localize
+    FastGettext.locale = cookies[:locale] || 'de'
+  end
 end

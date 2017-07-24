@@ -4,14 +4,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super do |user|
-      user.add_role :user
-    end
+    super
   end
 
   # POST /resource
   def create
-    super
+    super do |user|
+      user.add_role :user
+    end
   end
 
   # GET /resource/edit

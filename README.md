@@ -15,7 +15,6 @@ services using docker:
 * a postgres database for use with carchain
 * three Proof of Authority Ethereum nodes using parity
 
-
 ## License
 
 [MIT](https://github.com/blc-psi/carchain/blob/master/LICENSE)

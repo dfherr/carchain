@@ -14,16 +14,16 @@
       <% if can? :manage, Car::Registration %>
         <ul class="nav navbar-nav">
           <li <%= "class=active" if current_page?(car_registration_path) %>>
-            <%= link_to "KFZ Übersicht", car_registration_path %>
+            <%= link_to _("Car overview"), car_registration_path %>
           </li>
           <li <%= "class=active" if current_page?(car_registration_register_path) %>>
-            <%= link_to "KFZ Anmelden", car_registration_register_path %>
+            <%= link_to _("Register car"), car_registration_register_path %>
           </li>
           <li <%= "class=active" if current_page?(car_registration_end_registration_path) %>>
-            <%= link_to "KFZ Abmelden", car_registration_end_registration_path %>
+            <%= link_to _("Unregister car"), car_registration_end_registration_path %>
           </li>
           <li <%= "class=active" if current_page?(car_registration_change_registration_path) %>>
-            <%= link_to "KFZ Ummelden", car_registration_change_registration_path %>
+            <%= link_to _("Change car registration"), car_registration_change_registration_path %>
           </li>
           <li <%= "class=active" if current_page?(car_registration_search_for_registration_path) %>>
             <%= link_to "Versicherung", car_registration_search_for_registration_path %>
@@ -36,7 +36,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if can? :manage, Users %>
         <li <%= "class=active" if current_page?(users_roles_path) %>>
-          <%= link_to "Manage roles", users_roles_path %>
+          <%= link_to _("Manage roles"), users_roles_path %>
         </li>
         <% end %>
         <% if user_signed_in? %>
@@ -44,11 +44,11 @@
               <%= link_to current_user.email, edit_user_registration_path %>
             </li>
             <li>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              <%= link_to _("Log out"), destroy_user_session_path, method: :delete %>
             </li>
         <% else %>
             <li <%= "class=active" if current_page?(new_user_session_path) %>>
-              <%= link_to "Log in", new_user_session_path %>
+              <%= link_to _("Log in"), new_user_session_path %>
             </li>
         <% end %>
       </ul>

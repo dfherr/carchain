@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-24 01:40+0000\n"
+"PO-Revision-Date: 2017-07-24 01:40+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../app/controllers/users/roles_controller.rb:18
+msgid "Role may not be empty!"
+msgstr ""
+
+#: ../app/controllers/users/roles_controller.rb:23
+msgid "User #%{user} already has role %{role}."
+msgstr ""
+
+#: ../app/controllers/users/roles_controller.rb:25
+msgid "Role %{role} added to user #%{user}"
+msgstr ""
+
+#: ../app/controllers/users/roles_controller.rb:27
+msgid "Could not add role %{role} to user #%{user}"
+msgstr ""
+
+#: ../app/controllers/users/roles_controller.rb:41
+msgid "You can't remove that role, because the user could no longer manage roles."
+msgstr ""
+
+#: ../app/controllers/users/roles_controller.rb:43
+msgid "Role %{role} removed from user #%{user}"
+msgstr ""
+
+#: ../app/controllers/users/roles_controller.rb:46
+msgid "Could not remove role %{role} from user #%{user}"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:17
+msgid "Car overview"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:20
+msgid "Register car"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:23
+msgid "Unregister car"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:26
+msgid "Change car registration"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:33
+msgid "Manage roles"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:41
+msgid "Log out"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:45
+msgid "Log in"
+msgstr ""
+
+#: ../app/views/layouts/application.html.erb:77
+msgid "Imprint"
+msgstr ""
+
+#: ../app/views/layouts/application.html.erb:82
+msgid "Language"
+msgstr ""
+
+#: ../app/views/layouts/application.html.erb:84
+msgid "German"
+msgstr ""
+
+#: ../app/views/layouts/application.html.erb:86
+msgid "English"
+msgstr ""

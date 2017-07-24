@@ -71,3 +71,8 @@ body {
   padding-top: 10px;
   padding-bottom: 5px;
 }
+
+#nav-footer .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #FFFF00;
+    color: #FFC0CB;
+}
