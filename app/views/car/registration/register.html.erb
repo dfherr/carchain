@@ -1,5 +1,5 @@
-<div class="well col-md-12">
-  <div class="col-md-6">
+<div class="well col-lg-12">
+  <div class="col-lg-6">
     <h2>
       Anleitung
     </h2>
@@ -46,81 +46,85 @@
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-lg-6">
     <h2>
       Antrag
     </h2>
 
-  <%= form_tag car_create_registration_path, class: "form-horizontal" do %>
+  <%= form_tag car_create_registration_path, multipart: true, class: "form-horizontal" do %>
     <fieldset>
       <div class="form-group">
-        <label for="textArea" class="col-lg-3 col-md-4 control-label">ownerName</label>
-        <div class="col-lg-9 col-md-8">
-          <input type="text" class="form-control" id="ownerName" placeholder="ownerName">
+        <%= label_tag 'firstname', "Vorname", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-9">
+          <%= text_field_tag 'firstname', current_user.firstname, class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
-        <label for="textArea" class="col-lg-3 col-md-4 control-label">ownerSurname</label>
-        <div class="col-lg-9 col-md-8">
-          <input type="text" class="form-control" id="textArea" placeholder="ownerSurname">
+        <%= label_tag 'lastname', "Nachname", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-9">
+          <%= text_field_tag 'lastname', current_user.lastname, class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
-        <label for="textArea" class="col-lg-3 col-md-4 control-label">ownerAddress</label>
-        <div class="col-lg-9 col-md-8">
-          <input type="text" class="form-control" id="textArea" placeholder="ownerAddress">
+        <%= label_tag 'birthdate', "Geburtsdatum", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-9">
+          <%= text_field_tag 'birthdate', nil, class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
-        <label for="textArea" class="col-lg-3 col-md-4 control-label">ownerBirthday</label>
-        <div class="col-lg-9 col-md-8">
-          <input type="text" class="form-control" id="textArea" placeholder="ownerBirthday">
+        <%= label_tag 'street', "Straße", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-6">
+          <%= text_field_tag 'street', nil, class: 'form-control', required: true %>
+        </div>
+        <%= label_tag 'street_number', "Nr", class: 'col-lg-1 control-label' %>
+        <div class="col-lg-2">
+          <%= text_field_tag 'street_number', nil, class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
-        <label for="textArea" class="col-lg-3 col-md-4 control-label">licenseTag</label>
-        <div class="col-lg-9 col-md-8">
-          <input type="text" class="form-control" id="textArea" placeholder="licenseTag">
+        <%= label_tag 'zipcode', "PLZ", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-3">
+          <%= text_field_tag 'zipcode', nil, class: 'form-control', required: true %>
+        </div>
+        <%= label_tag 'city', "Stadt", class: 'col-lg-2 control-label' %>
+        <div class="col-lg-4">
+          <%= text_field_tag 'city', nil, class: 'form-control', required: true %>
         </div>
       </div>
+
       <div class="form-group">
-        <label for="textArea" class="col-lg-3 col-md-4 control-label">vehicleNumber</label>
-        <div class="col-lg-9 col-md-8">
-          <input type="text" class="form-control" id="textArea" placeholder="vehicleNumber">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="textArea" class="col-lg-3 col-md-4 control-label">Upload</label>
-        <div class="col-lg-9 col-md-8 vcenter" style="padding-top: 25px;">
+        <%= label_tag 'attachments', "Anhänge", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-9 vcenter" style="padding-top: 25px;">
           <ol>
             <li>
-              EG-Übereinstimmungsbescheinigung (COC-Bescheinigung)
-              <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+              Übereinstimmungsbescheinigung
+              <%= file_field_tag 'coc', accept: 'application/pdf' %>
             </li>
             <li>
               Elektronische Versicherungsbestätigung (eVB)
-              <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+              <%= file_field_tag 'evb', accept: 'application/pdf' %>
             </li>
             <li>
               Fahrzeugbrief/Zulassungsbescheinigung Teil II
-              <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+              <%= file_field_tag 'fzb_ii', accept: 'application/pdf' %>
             </li>
             <li>
               Fahrzeugschein/Zulassungsbescheinigung Teil I
-              <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+              <%= file_field_tag 'fzb_i', accept: 'application/pdf' %>
             </li>
             <li>
               HU-Bericht
-              <input name="datei" type="file" size="50" accept="application/pdf" placeholder="asdf">
+              <%= file_field_tag 'hu', accept: 'application/pdf' %>
             </li>
           </ol>
-
         </div>
       </div>
       <div class="form-group">
-        <div class="col-md-offset-1 col-lg-9 col-md-8">
+        <div class="col-lg-offset-1 col-lg-3">
           <button type="reset" class="btn btn-danger">Abbrechen</button>
-          <button type="submit" class="btn btn-primary">Abschicken</button>
+        </div>
+        <div class="col-lg-7">
+          <button type="submit" class="btn btn-primary btn-block">Abschicken</button>
         </div>
       </div>
     </fieldset>
