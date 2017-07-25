@@ -12,13 +12,13 @@
           1. Suchen Sie alle nötigen Dokumente zusammen:
           <ul>
             <li>
+              Personalausweis (Vorder- und Rückseite)
+            </li>
+            <li>
               EG-Übereinstimmungsbescheinigung (COC-Bescheinigung)
             </li>
             <li>
               Elektronische Versicherungsbestätigung (eVB)
-            </li>
-            <li>
-              Fahrzeugbrief/Zulassungsbescheinigung Teil II
             </li>
             <li>
               Fahrzeugschein/Zulassungsbescheinigung Teil I
@@ -97,6 +97,10 @@
         <div class="col-lg-9 vcenter" style="padding-top: 25px;">
           <ol>
             <li>
+              Personalausweis
+              <%= file_field_tag 'identity_card', accept: 'application/pdf' %>
+            </li>
+            <li>
               Übereinstimmungsbescheinigung
               <%= file_field_tag 'coc', accept: 'application/pdf' %>
             </li>
@@ -105,12 +109,8 @@
               <%= file_field_tag 'evb', accept: 'application/pdf' %>
             </li>
             <li>
-              Fahrzeugbrief/Zulassungsbescheinigung Teil II
-              <%= file_field_tag 'fzb_ii', accept: 'application/pdf' %>
-            </li>
-            <li>
               Fahrzeugschein/Zulassungsbescheinigung Teil I
-              <%= file_field_tag 'fzb_i', accept: 'application/pdf' %>
+              <%= file_field_tag 'certificate_registration', accept: 'application/pdf' %>
             </li>
             <li>
               HU-Bericht

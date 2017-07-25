@@ -4,17 +4,24 @@ class CreateCarRegistrations < ActiveRecord::Migration[5.1]
       t.string :contract_address, null: false
       t.jsonb :contract_abi
 
+      t.string :identity_card_sha3_256
+      t.binary :identity_card_file
+
       t.string :coc_sha3_256
       t.binary :coc_file
 
       t.string :evb_sha3_256
       t.binary :evb_file
 
-      t.string :fzb_i_sha3_256
-      t.binary :fzb_i_file
+      t.string :certificate_registration_sha3_256
+      t.binary :certificate_registration_file
 
-      t.string :fzb_ii_sha3_256
-      t.binary :fzb_ii_file
+      t.string :certificate_title_sha3_256
+      t.binary :certificate_title_file
+
+      t.string :hu_sha3_256
+      t.binary :hu_file
+
 
       t.references :user
 
