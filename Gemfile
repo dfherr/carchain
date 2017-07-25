@@ -7,6 +7,8 @@ end
 
 gem 'cancancan', '~> 2.0.0'
 gem 'devise', '~> 4.3.0'
+gem 'eth'
+gem 'ethereum.rb', git: 'https://github.com/dfherr/ethereum.rb.git'
 gem "fast_gettext", '~> 1.4.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'

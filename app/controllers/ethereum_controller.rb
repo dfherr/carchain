@@ -4,7 +4,18 @@ class EthereumController < ApplicationController
       method: "web3_clientVersion",
       id: 1,
       jsonrpc: "2.0",
-      params: {}
+      params: []
+    }
+    resp = send_json_rpc_request(data)
+    render json: resp.body
+  end
+
+  def generate_signer_token
+    data = {
+      method: "signer_generateAuthorizationToken",
+      id: 1,
+      jsonrpc: "2.0",
+      params: []
     }
     resp = send_json_rpc_request(data)
     render json: resp.body
@@ -65,9 +76,13 @@ class EthereumController < ApplicationController
   end
 
   def deploy_contract
-    contract = Ethereum::Contract.create(file: "smartcontracts/CarRegistration.sol")
+    decrypted_key = Eth::Key.decrypt File.read('./config/parity_deployment_key.json'), 'deploymentPassword'
+    client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
+    client.gas_price = 0
+    contract = Ethereum::Contract.create(file: "smartcontracts/greeter.sol", client: client)
+    contract.key = decrypted_key
     address = contract.deploy_and_wait("Hello from ethereum.rb!")
-    render json: { address: address }.to_json
+    render json: { address: address.to_s, greet: contract.call.greet }
   end
 
   private

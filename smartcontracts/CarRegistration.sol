@@ -104,7 +104,7 @@ contract carRegistration{
         return state;
     }
 
-    function getOwnerData() returns(
+    function getOwnerName() returns(
         string _ownerName){
         _ownerName = ownerName;
     }

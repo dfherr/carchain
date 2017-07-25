@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   scope :ethereum do
     get '/web3_client_version', to: 'ethereum#web3_client_version'
+    get '/generate_signer_token', to: 'ethereum#generate_signer_token'
     get '/owner_data/:contract', to: 'ethereum#owner_data'
     get '/owner_name/:contract', to: 'ethereum#owner_name'
     get '/deploy_contract', to: 'ethereum#deploy_contract'
