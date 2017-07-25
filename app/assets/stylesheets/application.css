@@ -14,3 +14,7 @@
  *= require_tree .
  *= require_self
  */
+
+.hash-value {
+  font-family: Consolas, Lucida Console, monospace;
+}
