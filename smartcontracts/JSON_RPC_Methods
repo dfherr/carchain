@@ -1,26 +1,70 @@
 Methods
 
 !! Change fields accordingly!!
-AccountAdress:		0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9
-ContractAddress: 	0x19E1626BC4d86a196b464797Eab9713a05719012
+AccountAdress:		0x004ec07d2329997267Ec62b4166639513386F32E
+ContractAddress: 	0xEa4C690E7560070071643960f20bA984c8A922cd
 
-eth_call-calls
+eth_call-calls => getter
+
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004ec07d2329997267Ec62b4166639513386F32E", "to": "0xEa4C690E7560070071643960f20bA984c8A922cd", "data": "0xe4b85399"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 _________________________________________________________________________________________________________________________________
-getOwnerData(): 		0xe4b85399e315fa8d1cc43ddf9ad5adb58165ddd9e6bc590eb5ce3e5776442594 -> 0xe4b85399
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0xe4b85399"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
-_________________________________________________________________________________________________________________________________
-getState():				0x1865c57dc1ec44b2b49053047977a25c818fe96484d77000dc1fb86190a36770 -> 0x1865c57d
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_call","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x1865c57d"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+getOwnerData(): 				0xe4b85399e315fa8d1cc43ddf9ad5adb58165ddd9e6bc590eb5ce3e5776442594 -> 0xe4b85399
+getOwnerName(): 				0x145ef6e9add632d91d52883892b8bc558651ffcca04dd3af14bb3ed034f4bdd7 -> 0x145ef6e9
+getOwnerSurname():				0x52e8427b8ba42e93d970a624343945fd8452e98ef34c7c4065048748660a2056 -> 0x52e8427b
+getOwnerAddress():				0x0c4f65bd33d6fb7d9516d118b09255f96b3578ece3d7989cfdcb09ec7f1481aa -> 0x0c4f65bd
+getOwnerBirthday():				0x844341f5b0338b68eda2e3145a01b1665490566e2c2826eb7d6d77e4f79e405e -> 0x844341f5
+getLicenseTag():				0x49861bc0c2dd0fbe4b35578f065cbab14974f6ff929444dc3f65eca37b018a42 -> 0x49861bc0
+getVehicleNumber():				0x7833bad2cf05f7030eab6b03f027c1bd908be4573eba21b2bfac274b21923b60 -> 0x7833bad2
+getHashCOC():					0xe03eecce628fd9c40c031c80fa16daa52eece62c6c7aec4354aacb6280af2deb -> 0xe03eecce
+getHashEVB():					0xcb5af8ba5f2c9a2629f3520f0d6caf1e2e22b9564e487d4303c3fa09621428b8 -> 0xcb5af8ba
+getHashVehicleCertificate():	0xe93e7f2f07b3415c2e4d9cd5f417c2192560201b5d1b6c42d4948db96af91b78 -> 0xe93e7f2f
+getHashVehicleTitle():			0xcc12d799214c24713fbb8b0b78eb30c63f404a1a4dc0522e932859e770ade0c2 -> 0xcc12d799
+getHashHU():					0xe2ee97bf3c01d16f501266f14763673f4346c78b1d1751d3e3ccc0aaa4e543f7 -> 0xe2ee97bf
+getTimestamp():					0x188ec356fdbe3a2920f422cb32d3e849da90fc45c8af700c78b5b37515385336 -> 0x188ec356
+getState():						0x1865c57dc1ec44b2b49053047977a25c818fe96484d77000dc1fb86190a36770 -> 0x1865c57d
 
 _________________________________________________________________________________________________________________________________
 
-eth_sendTransaction-calls
+eth_sendTransaction-calls = setter
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! disclaimer
+string pading example of string "test"
+0x295795e2000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000047465737400000000000000000000000000000000000000000000000000000000
+
+first 4 byte: first 4 byte method hash: 0x295795e2
+string padding: 
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000020 < always there
+0000000000000000
+0000000000000000
+0000000000000000
+0000000000000004 < number of letters / here test -> 4 letters
+7465737400000000 < start of utf8 encodes as hex
+0000000000000000
+0000000000000000
+0000000000000000
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! /disclaimer
+_________________________________________________________________________________________________________________________________
+setOwnerName(string): 	0x295795e243c8f3c21ac8b927a57cf257703b51011afac10ad5a6d5919e6f4026 -> 0x295795e2
+
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0x004ec07d2329997267Ec62b4166639513386F32E", "to": "0xEa4C690E7560070071643960f20bA984c8A922cd", "data": "0x295795e2000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000047465737400000000000000000000000000000000000000000000000000000000"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+_________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+Enum Calls obsolete
 _________________________________________________________________________________________________________________________________
 setStateSubmitted(): 	0x36a72c48f5331f3feeb6e29b11fd37b17a053eece5caf68f10c25f0f924d200a -> 0x36a72c48
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x36a72c48"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0x004ec07d2329997267Ec62b4166639513386F32E", "to": "0xeDFC9c2F4Cfa7495c1A95CfE1cB856F5980D5e18", "data": "0x36a72c48"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 _________________________________________________________________________________________________________________________________
 setStateIncomplete():	0x1b3895a296368016d675a967b8b2eadb2419004011a428a835aa432a676ffae5 -> 0x1b3895a2
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x1b3895a2"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0x004ec07d2329997267Ec62b4166639513386F32E", "to": "0xeDFC9c2F4Cfa7495c1A95CfE1cB856F5980D5e18", "data": "0x1b3895a2"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545
 _________________________________________________________________________________________________________________________________
 setStateAccepted():		0x4be9c0c5d869fbfb469e6f0a90153aaf582ccfd2742ade748bb6373a5ed923a7 -> 0x4be9c0c5
 curl -X POST --data '{"jsonrpc":"2.0","method":"eth_sendTransaction","params": [{"from": "0x004E651736f1f8D91a3ABD799b8bE3Ca8C4465E9", "to": "0x19E1626BC4d86a196b464797Eab9713a05719012", "data": "0x4be9c0c5"}],"id":1}' -H "Content-Type: application/json" -X POST localhost:8545

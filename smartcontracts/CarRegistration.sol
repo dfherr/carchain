@@ -24,18 +24,17 @@ contract carRegistration{
     string public ownerBirthday;
 
     //information of car
-    string public licenseTag;           //Kennzeichen
-    string public vehicleNumber;        //Fahrzeugnummer
-    bytes32 public hashCOC;                //EG-UebereinstimmungsbescheinigungE
-    bytes32 public hashEVB;                //elektronische Versicherungsbestaetigung
-    bytes32 public hashVehicleCertificate; //Fahrzeugschein/Zulassungsbescheinigung Teil 1
-    bytes32 public hashVehicleTitle;       //Fahrzeugbrief/Zulassungsbescheinigung Teil 2
-    bytes32 public hashHU;                 //HU-Bericht
+    string public licenseTag;               //Kennzeichen
+    string public vehicleNumber;            //Fahrzeugnummer
+    bytes32 public hashCOC;                 //EG-UebereinstimmungsbescheinigungE
+    bytes32 public hashEVB;                 //elektronische Versicherungsbestaetigung
+    bytes32 public hashVehicleCertificate;  //Fahrzeugschein/Zulassungsbescheinigung Teil 1
+    bytes32 public hashVehicleTitle;        //Fahrzeugbrief/Zulassungsbescheinigung Teil 2
+    bytes32 public hashHU;                  //HU-Bericht
 
     //information of registration
     string public timestamp;
-    enum State {submitted, incomplete, accepted, declined, canceled}
-    State public state;
+    string public state;                    //submitted, incomplete, accepted, declined, canceled
 
     function carRegistration(
         //information of car owner
@@ -66,48 +65,10 @@ contract carRegistration{
         hashVehicleCertificate = _hashVehicleCertificate;
         hashVehicleTitle = _hashVehicleTitle;
         hashHU = _hashHU;
-        setStateSubmitted();
+        state = "submitted";
 
     }
 
-    //Event not yet in action
-    //event stateChange(address from, State state);
-
-    //usecase bureau
-    //checking/processing the registration application
-    //submitted, lacking, accepted, declined, canceled
-    //TODO: give event on change
-    function setStateSubmitted() internal{
-      state = State.submitted;
-    }
-
-    function setStateIncomplete() internal{
-      state = State.incomplete;
-    }
-
-    function setStateAccepted() internal{
-      state = State.accepted;
-    }
-
-    function setStateDeclined() internal{
-      state = State.declined;
-    }
-
-    function setStateCanceled() internal{
-      state = State.canceled;
-    }
-
-    //usecase insurance
-    //insurance checks state of the application
-    //?should insurance also check owner or car details?
-    function getState() returns(State){
-        return state;
-    }
-
-    function getOwnerName() returns(
-        string _ownerName){
-        _ownerName = ownerName;
-    }
 
     //usecase police
     //checking for owner data
@@ -121,5 +82,135 @@ contract carRegistration{
         _ownerSurname = ownerSurname;
         _ownerAddress = ownerAddress;
         _ownerBirthday = ownerBirthday;
+    }
+
+    function getOwnerName() returns(
+        string _ownerName){
+        _ownerName = ownerName;
+    }
+
+    function setOwnerName(
+        string _ownerName){
+        ownerName = _ownerName;
+    }
+
+    function getOwnerSurname() returns(
+        string _ownerSurname){
+        _ownerSurname = ownerSurname;
+    }
+
+    function setOwnerSurname(
+        string _ownerSurname){
+        ownerSurname = _ownerSurname;
+    }
+
+    function getOwnerAddress() returns(
+        string _ownerAddress){
+        _ownerAddress = ownerAddress;
+    }
+
+    function setOwnerAddress(
+        string _ownerAddress){
+        ownerAddress = _ownerAddress;
+    }
+
+    function getOwnerBirthday() returns(
+        string _ownerBirthday){
+        _ownerBirthday = ownerBirthday;
+    }
+
+    function setOwnerBirthday(
+        string _ownerBirthday){
+        ownerBirthday = _ownerBirthday;
+    }
+
+    function getLicenseTag() returns(
+        string _licenseTag){
+        _licenseTag = licenseTag;
+    }
+
+    function setLicenseTag(
+        string _licenseTag){
+        licenseTag = _licenseTag;
+    }
+
+    function getVehicleNumber() returns(
+        string _vehicleNumber){
+        _vehicleNumber = vehicleNumber;
+    }
+
+    function setVehicleNumber(
+        string _vehicleNumber){
+        vehicleNumber = _vehicleNumber;
+    }
+
+    function getHashCOC() returns(
+        bytes32 _hashCOC){
+        _hashCOC = hashCOC;
+    }
+
+    function setHashCOC(
+        bytes32 _hashCOC){
+        hashCOC = _hashCOC;
+    }
+
+    function getHashEVB() returns(
+        bytes32 _hashEVB){
+        _hashEVB = hashEVB;
+    }
+
+    function setHashEVB(
+        bytes32 _hashEVB){
+        hashEVB = _hashEVB;
+    }
+
+    function getHashVehicleCertificate() returns(
+        bytes32 _hashVehicleCertificate){
+        _hashVehicleCertificate = hashVehicleCertificate;
+    }
+
+    function setHashVehicleCertificate(
+        bytes32 _hashVehicleCertificate){
+        hashVehicleCertificate = _hashVehicleCertificate;
+    }
+
+    function getHashVehicleTitle() returns(
+        bytes32 _hashVehicleTitle){
+        _hashVehicleTitle = hashVehicleTitle;
+    }
+
+    function setHashVehicleTitle(
+        bytes32 _hashVehicleTitle){
+        hashVehicleTitle = _hashVehicleTitle;
+    }
+
+    function getHashHU() returns(
+        bytes32 _hashHU){
+        _hashHU = hashHU;
+    }
+
+    function setHashHU(
+        bytes32 _hashHU){
+        hashHU = _hashHU;
+    }
+
+    function getTimestamp() returns(
+        string _timestamp){
+        _timestamp = timestamp;
+    }
+
+    function setTimestamp(
+        string _timestamp){
+        timestamp = _timestamp;
+        }
+
+   function getState() returns(
+        string _state){
+        _state = state;
+    }
+
+    function setState(
+        string _state){
+        state = _state;
     }
 }
