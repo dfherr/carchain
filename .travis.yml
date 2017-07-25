@@ -3,6 +3,8 @@ dist: trusty
 cache: bundler
 services:
   - postgresql
+addons:
+  postgresql: "9.6"
 rvm:
   - 2.4.1
 branches:
