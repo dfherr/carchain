@@ -57,4 +57,5 @@ Rails.application.configure do
   config.log_level = :debug
 
   config.parity_json_rpc_url = ENV["PARITY_JSON_RPC_URL"] || "http://localhost:8545"
+  config.eth_deploy_key = Eth::Key.decrypt(File.read('./config/parity_deployment_key.json'), 'deploymentPassword')
 end

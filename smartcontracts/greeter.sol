@@ -15,10 +15,26 @@ contract greeter is mortal {
     /* define variable greeting of the type string */
     string greeting;
 
+    enum Greetings { Hello, Bye }
+    Greetings greetingType;
+
     /* this runs when the contract is executed */
     function greeter(string _greeting) public {
         greeting = _greeting;
+        setGreetingBye();
     }
+
+    function setGreetingHello() {
+      greetingType = Greetings.Hello;
+    }
+
+    function setGreetingBye() {
+      greetingType = Greetings.Bye;
+    }
+
+    function getGreetingType() returns (Greetings) {
+       return greetingType;
+   }
 
     /* main function */
     function greet() constant returns (string) {

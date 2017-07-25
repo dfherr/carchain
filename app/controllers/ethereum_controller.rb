@@ -76,13 +76,13 @@ class EthereumController < ApplicationController
   end
 
   def deploy_contract
-    decrypted_key = Eth::Key.decrypt File.read('./config/parity_deployment_key.json'), 'deploymentPassword'
     client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
     client.gas_price = 0
     contract = Ethereum::Contract.create(file: "smartcontracts/greeter.sol", client: client)
-    contract.key = decrypted_key
+    contract.key = Rails.configuration.eth_deploy_key
     address = contract.deploy_and_wait("Hello from ethereum.rb!")
-    render json: { address: address.to_s, greet: contract.call.greet }
+    contract.transact_and_wait.set_greeting_hello
+    render json: { address: address.to_s, greet: contract.call.greet, greeting_type: contract.call.get_greeting_type }
   end
 
   private

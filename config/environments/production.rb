@@ -77,4 +77,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.parity_json_rpc_url = ENV["PARITY_JSON_RPC_URL"]
+  config.eth_deploy_key = Eth::Key.decrypt(File.read('./config/parity_deployment_key.json'), 'deploymentPassword')
 end
