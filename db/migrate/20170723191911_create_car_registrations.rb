@@ -2,7 +2,7 @@ class CreateCarRegistrations < ActiveRecord::Migration[5.1]
   def change
     create_table :car_registrations do |t|
       t.string :contract_address, null: false
-      t.jsonb :contract_abi
+      t.jsonb :contract_abi, null: false
 
       t.string :identity_card_sha3_256
       t.binary :identity_card_file

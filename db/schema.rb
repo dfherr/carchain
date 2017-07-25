@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170724142829) do
 
   create_table "car_registrations", force: :cascade do |t|
     t.string "contract_address", null: false
-    t.jsonb "contract_abi"
+    t.jsonb "contract_abi", null: false
     t.string "identity_card_sha3_256"
     t.binary "identity_card_file"
     t.string "coc_sha3_256"

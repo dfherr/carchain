@@ -1,5 +1,8 @@
 FactoryGirl.define do
-  factory :car_registration, class: 'Car::Registration' do
+  factory :car_registration do
+    user
+    contract_address "0x00"
+    contract_abi ""
   end
   factory :role do
   end
