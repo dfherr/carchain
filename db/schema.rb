@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20170724142829) do
     t.binary "identity_card_file"
     t.string "coc_sha3_256"
     t.binary "coc_file"
-    t.string "evb_sha3_256"
-    t.binary "evb_file"
     t.string "certificate_registration_sha3_256"
     t.binary "certificate_registration_file"
     t.string "certificate_title_sha3_256"
@@ -33,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170724142829) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["contract_address"], name: "index_car_registrations_on_contract_address", unique: true
     t.index ["user_id"], name: "index_car_registrations_on_user_id"
   end
 

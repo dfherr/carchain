@@ -10,9 +10,6 @@ class CreateCarRegistrations < ActiveRecord::Migration[5.1]
       t.string :coc_sha3_256
       t.binary :coc_file
 
-      t.string :evb_sha3_256
-      t.binary :evb_file
-
       t.string :certificate_registration_sha3_256
       t.binary :certificate_registration_file
 
@@ -27,5 +24,7 @@ class CreateCarRegistrations < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+
+    add_index :car_registrations, :contract_address, unique: true
   end
 end

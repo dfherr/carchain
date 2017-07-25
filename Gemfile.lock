@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/dfherr/ethereum.rb.git
-  revision: 56f9f690ef96c04e7939375aff093739bf0af187
+  revision: 1202f5fbbfd59a93108c7805ff112c64838cde18
   specs:
     ethereum.rb (2.1.6)
       activesupport (~> 5.0)

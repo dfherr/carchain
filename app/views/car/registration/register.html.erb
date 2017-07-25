@@ -18,13 +18,19 @@
               EG-Übereinstimmungsbescheinigung (COC-Bescheinigung)
             </li>
             <li>
-              Elektronische Versicherungsbestätigung (eVB)
+              Fahrzeugschein/Zulassungsbescheinigung Teil I (bei Gebrauchtwagen)
             </li>
             <li>
-              Fahrzeugschein/Zulassungsbescheinigung Teil I
+              Fahrzeugbrief/Zulassungsbescheinigung Teil II
             </li>
             <li>
               HU-Bericht
+            </li>
+            <li>
+              Fahrzeug-Identifizierungsnummer (<strong>FIN</strong>)
+            </li>
+            <li>
+              Elektronische Versicherungsbestätigung (<strong>eVB</strong>)
             </li>
           </ul>
         </p>
@@ -91,30 +97,41 @@
           <%= text_field_tag 'city', nil, class: 'form-control', required: true %>
         </div>
       </div>
-
+      <div class="form-group">
+        <%= label_tag 'vehicle_number', "FIN", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-9">
+          <%= text_field_tag 'vehicle_number', nil, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'evb', "eVB", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-9">
+          <%= text_field_tag 'evb', nil, class: 'form-control', required: true %>
+        </div>
+      </div>
       <div class="form-group">
         <%= label_tag 'attachments', "Anhänge", class: 'col-lg-3 control-label' %>
         <div class="col-lg-9 vcenter" style="padding-top: 25px;">
           <ol>
             <li>
               Personalausweis
-              <%= file_field_tag 'identity_card', accept: 'application/pdf' %>
+              <%= file_field_tag 'identity_card', required: true, accept: 'application/pdf' %>
             </li>
             <li>
               Übereinstimmungsbescheinigung
-              <%= file_field_tag 'coc', accept: 'application/pdf' %>
-            </li>
-            <li>
-              Elektronische Versicherungsbestätigung (eVB)
-              <%= file_field_tag 'evb', accept: 'application/pdf' %>
+              <%= file_field_tag 'coc', required: true, accept: 'application/pdf' %>
             </li>
             <li>
               Fahrzeugschein/Zulassungsbescheinigung Teil I
               <%= file_field_tag 'certificate_registration', accept: 'application/pdf' %>
             </li>
             <li>
+              Fahrzeugbrief/Zulassungsbescheinigung Teil II
+              <%= file_field_tag 'certificate_title', required: true, accept: 'application/pdf' %>
+            </li>
+            <li>
               HU-Bericht
-              <%= file_field_tag 'hu', accept: 'application/pdf' %>
+              <%= file_field_tag 'hu', required: true, accept: 'application/pdf' %>
             </li>
           </ol>
         </div>

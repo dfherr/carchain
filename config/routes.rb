@@ -32,11 +32,9 @@ Rails.application.routes.draw do
     get '/police/search_for_owner', to: 'police#search_for_owner'
   end
 
-  scope :ethereum do
-    get '/web3_client_version', to: 'ethereum#web3_client_version'
-    get '/generate_signer_token', to: 'ethereum#generate_signer_token'
-    get '/owner_data/:contract', to: 'ethereum#owner_data'
-    get '/owner_name/:contract', to: 'ethereum#owner_name'
-    get '/deploy_contract', to: 'ethereum#deploy_contract'
-  end
+  get '/parity/web3_client_version', to: 'parity#web3_client_version'
+  get '/parity/generate_signer_token', to: 'parity#generate_signer_token'
+  get '/parity/owner_data/:contract', to: 'parity#owner_data'
+  get '/parity/owner_name/:contract', to: 'parity#owner_name'
+  get '/parity/deploy_contract', to: 'parity#deploy_contract'
 end

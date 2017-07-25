@@ -13,7 +13,7 @@ contract mortal {
 
 contract greeter is mortal {
     /* define variable greeting of the type string */
-    string greeting;
+    string public greeting;
 
     enum Greetings { Hello, Bye }
     Greetings greetingType;

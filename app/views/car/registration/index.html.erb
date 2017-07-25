@@ -6,97 +6,30 @@
   <thead>
   <tr>
     <th>#</th>
-    <th>KFZ</th>
+    <th>Referenz</th>
     <th>Status</th>
     <th>Datum</th>
     <th></th>
   </tr>
   </thead>
   <tbody>
-  <% @registrations.each do |registration| %>
-
-    <tr>
-      <td><%= registration.id %></td>
-      <td></td>
-      <td></td>
-      <td><%= registration.updated_at %></td>
+  <% @table_data.each_with_index do |registration, i| %>
+    <tr class="<%= registration[:status][:class] %>">
+      <td><%= i+1 %></td>
+      <td><samp><%= registration[:reference] %></samp></td>
+      <td><%= registration[:status][:text] %></td>
+      <td><%= registration[:time] %></td>
       <td>
         <div class="btn-group">
           <a href="#" class="btn btn-primary btn-xs dropdown-toggle btn-block" data-toggle="dropdown"><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Anmelden", car_registration_register_path %></li>
-            <li><%= link_to "Ummelden", car_registration_change_registration_path %></li>
+            <li><%= link_to "Bestätigen", car_registration_change_registration_path %></li>
             <li><%= link_to "Abmelden", car_registration_end_registration_path %></li>
           </ul>
         </div>
       </td>
     </tr>
   <% end %>
-  <tr class="success">
-    <td>1</td>
-    <td>Auto Bezeichnung</td>
-    <td>Angemeldet</td>
-    <td>Datum der letzten Aktion</td>
-    <td>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary btn-xs dropdown-toggle btn-block" data-toggle="dropdown"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Anmelden", car_registration_register_path %></li>
-          <li><%= link_to "Ummelden", car_registration_change_registration_path %></li>
-          <li><%= link_to "Abmelden", car_registration_end_registration_path %></li>
-        </ul>
-      </div>
-    </td>
-  </tr>
-  <tr class="info">
-    <td>2</td>
-    <td>Auto Bezeichnung</td>
-    <td>In Bearbeitung</td>
-    <td>Datum der letzten Aktion</td>
-    <td>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary btn-xs dropdown-toggle btn-block" data-toggle="dropdown"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Anmelden", car_registration_register_path %></li>
-          <li><%= link_to "Ummelden", car_registration_change_registration_path %></li>
-          <li><%= link_to "Abmelden", car_registration_end_registration_path %></li>
-        </ul>
-      </div>
-    </td>
-  </tr>
-  <tr class="warning">
-    <td>3</td>
-    <td>Auto Bezeichnung</td>
-    <td>Fehlende Dokumente</td>
-    <td>Datum der letzten Aktion</td>
-    <td>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary btn-xs dropdown-toggle btn-block" data-toggle="dropdown"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Anmelden", car_registration_register_path %></li>
-          <li><%= link_to "Ummelden", car_registration_change_registration_path %></li>
-          <li><%= link_to "Abmelden", car_registration_end_registration_path %></li>
-        </ul>
-      </div>
-    </td>
-  </tr>
-  <tr class="danger">
-    <td>4</td>
-    <td>Auto Bezeichnung</td>
-    <td>Abgelehnt</td>
-    <td>Datum der letzten Aktion</td>
-    <td>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary btn-xs dropdown-toggle btn-block" data-toggle="dropdown"><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Anmelden", car_registration_register_path %></li>
-          <li><%= link_to "Ummelden", car_registration_change_registration_path %></li>
-          <li><%= link_to "Abmelden", car_registration_end_registration_path %></li>
-        </ul>
-      </div>
-    </td>
-  </tr>
-
   </tbody>
 </table>
 </div>
