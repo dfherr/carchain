@@ -34,6 +34,8 @@ class Users::RolesController < ApplicationController
     old_ability = Ability.new(user)
     ActiveRecord::Base.transaction do
       if user.roles.destroy(role)
+        puts old_ability.can?(:manage, user)
+        puts Ability.new(user).cannot?(:manage, user)
         if old_ability.can?(:manage, user) && Ability.new(user).cannot?(:manage, user)
           user.add_role role.name.to_sym
           flash[:alert] = _("You can't remove that role, because the user could no longer manage roles.")

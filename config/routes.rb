@@ -26,10 +26,10 @@ Rails.application.routes.draw do
     get '/registration/register', to: 'registration#register'
     get '/registration/end_registration', to: 'registration#end_registration'
     get '/registration/change_registration', to: 'registration#change_registration'
-    get '/registration/search_for_registration/', to: 'registration#search_for_registration'
-    get '/registration/search_for_owner/', to: 'registration#search_for_owner'
-
     post '/registration/register', to: 'registration#create_registration', as: 'create_registration'
+
+    get '/insurance/search_for_registration', to: 'insurance#search_for_registration'
+    get '/police/search_for_owner', to: 'police#search_for_owner'
   end
 
   scope :ethereum do

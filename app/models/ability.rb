@@ -31,8 +31,10 @@ class Ability
 
     user ||= User.new
 
-    can :manage, :all if user.is_admin?
+    can :manage, User if user.is_admin?
 
-    can :manage, Car::Registration if user.is_user?
+    can :manage, Car::InsuranceController if user.is_insurance?
+    can :manage, Car::PoliceController if user.is_police?
+    can :manage, CarRegistration if user.is_user?
   end
 end

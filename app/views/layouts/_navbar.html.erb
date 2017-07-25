@@ -11,8 +11,8 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-      <% if can? :manage, Car::Registration %>
-        <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav">
+        <% if can? :manage, CarRegistration %>
           <li <%= "class=active" if current_page?(car_registration_path) %>>
             <%= link_to _("Car overview"), car_registration_path %>
           </li>
@@ -22,16 +22,20 @@
           <li <%= "class=active" if current_page?(car_registration_end_registration_path) %>>
             <%= link_to _("Unregister car"), car_registration_end_registration_path %>
           </li>
-          <li <%= "class=active" if current_page?(car_registration_search_for_registration_path) %>>
-            <%= link_to _("Insurance"), car_registration_search_for_registration_path %>
+        <% end %>
+        <% if can? :manage, Car::InsuranceController %>
+          <li <%= "class=active" if current_page?(car_insurance_search_for_registration_path) %>>
+            <%= link_to _("Insurance"), car_insurance_search_for_registration_path %>
           </li>
-          <li <%= "class=active" if current_page?(car_registration_search_for_owner_path) %>>
-            <%= link_to _("Police"), car_registration_search_for_owner_path %>
+        <% end %>
+        <% if can? :manage, Car::PoliceController %>
+          <li <%= "class=active" if current_page?(car_police_search_for_owner_path) %>>
+            <%= link_to _("Police"), car_police_search_for_owner_path %>
           </li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if can? :manage, Users %>
+        <% if can? :manage, User %>
         <li <%= "class=active" if current_page?(users_roles_path) %>>
           <%= link_to _("Manage roles"), users_roles_path %>
         </li>
