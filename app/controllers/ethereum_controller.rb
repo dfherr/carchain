@@ -81,8 +81,17 @@ class EthereumController < ApplicationController
     contract = Ethereum::Contract.create(file: "smartcontracts/greeter.sol", client: client)
     contract.key = Rails.configuration.eth_deploy_key
     address = contract.deploy_and_wait("Hello from ethereum.rb!")
+    puts contract.address
+    puts address
+    puts contract.call.get_greeting_type
+    abi = contract.abi
+    puts abi
     contract.transact_and_wait.set_greeting_hello
-    render json: { address: address.to_s, greet: contract.call.greet, greeting_type: contract.call.get_greeting_type }
+    contract_from_address = Ethereum::Contract.create(name: "bla", address: contract.address, abi: abi, client: client)
+    render json: { address: address.to_s,
+                   greet: contract.call.greet,
+                   greeting_type: contract.call.get_greeting_type,
+                   greeting_type_from_address: contract_from_address.call.get_greeting_type }
   end
 
   private

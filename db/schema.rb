@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723191911) do
+ActiveRecord::Schema.define(version: 20170724142829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "car_registrations", force: :cascade do |t|
+    t.string "contract_address", null: false
+    t.jsonb "contract_abi"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_car_registrations_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -53,6 +57,8 @@ ActiveRecord::Schema.define(version: 20170723191911) do
     t.datetime "updated_at", null: false
     t.string "firstname", null: false
     t.string "lastname", null: false
+    t.bigint "car_registration_id"
+    t.index ["car_registration_id"], name: "index_users_on_car_registration_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -67,4 +73,5 @@ ActiveRecord::Schema.define(version: 20170723191911) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "users", "car_registrations"
 end
