@@ -21,7 +21,6 @@ gem 'puma', '~> 3.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 
-gem 'rest-client', '~> 2.0.2'
 gem "rolify", '~> 5.1.0'
 # therubyracer javascript runtime to run uglifier
 # See https://github.com/rails/execjs#readme for more supported runtimes
