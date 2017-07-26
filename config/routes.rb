@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     get '/registration/end_registration', to: 'registration#end_registration'
     post '/registration/register', to: 'registration#create_registration', as: 'create_registration'
 
+    get '/official', to: 'official#index'
+
     get '/insurance/search_for_registration', to: 'insurance#search_for_registration'
     get '/police/search_for_owner', to: 'police#search_for_owner'
   end

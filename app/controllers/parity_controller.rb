@@ -41,20 +41,15 @@ class ParityController < ApplicationController
     #   ["b410677b84ed73fac43fcf1abd933151dd417d932a0ef9b0260ecf8b7b72ecb9"].pack('H*'),
     #   ["86bc56fc56af4c3cde021282f6b727ee9f90dd636e0b0c712a85d416c75e652d"].pack('H*'),
     #   ["0c67354981e9068905680b57898ad4f04b993c63eb66aa3f19cdfdc71d88077e"].pack('H*')
-    #  )
-    # puts address
-    # abi = contract.abi
-    # puts contract.call.owner_firstname
-    # puts contract.call.hash_identidy_card.unpack1('H*')
-    # # puts contract.call.hash_identidy_card
-    # abi = contract.abi
-    # puts abi
-    # puts abi.class
-    # puts abi.to_json
+    # )
+    #
+    # a = contract.transact_and_wait
+    # puts a
+    # puts a.class
+    #
     # return render json: { address: address.to_s,
-    #                state: contract.call.state,
-    #                identiy: contract.call.hash_identidy_card.unpack1('H*')
-    #             }
+    #                       state: contract.call.state,
+    #                       identiy: contract.call.hash_identidy_card.unpack1('H*') }
     render json: ["method disabled"]
   end
 

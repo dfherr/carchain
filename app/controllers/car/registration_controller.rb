@@ -2,14 +2,6 @@ module Car
   class RegistrationController < ApplicationController
     before_action :authorize
 
-    REGISTER_STATE = [
-      { text: "In Bearbeitung", class: "info" },
-      { text: "Unvollständig", class: "warning" },
-      { text: "Angemeldet", class: "success" },
-      { text: "Abgelehnt", class: "danger" },
-      { text: "In Abgemeldet", class: "danger" }
-    ].freeze
-
     def index
       registrations = current_user.car_registrations
       client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
@@ -25,7 +17,7 @@ module Car
                                              abi: reg.contract_abi,
                                              client: client)
         row[:reference] = reg.contract_address.sub(/^0x/, '')
-        row[:status] = REGISTER_STATE[contract.call.state]
+        row[:status] = CarRegistration::REGISTER_STATE[contract.call.state]
         row[:owner] = "#{contract.call.owner_firstname} #{contract.call.owner_lastname}"
         row[:time] = Time.at(contract.call.timestamp.to_i).strftime("%d.%m.%Y")
         @table_data << row

@@ -19,8 +19,10 @@
           <li <%= "class=active" if current_page?(car_registration_register_path) %>>
             <%= link_to _("Register car"), car_registration_register_path %>
           </li>
-          <li <%= "class=active" if current_page?(car_registration_end_registration_path) %>>
-            <%= link_to _("Unregister car"), car_registration_end_registration_path %>
+        <% end %>
+        <% if can? :manage, Car::OfficialController %>
+          <li <%= "class=active" if current_page?(car_official_path) %>>
+            <%= link_to _("Official"), car_official_path %>
           </li>
         <% end %>
         <% if can? :manage, Car::InsuranceController %>

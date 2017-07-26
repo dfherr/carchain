@@ -35,6 +35,7 @@ class Ability
 
     can :manage, Car::InsuranceController if user.is_insurance?
     can :manage, Car::PoliceController if user.is_police?
+    can :manage, Car::OfficialController if user.is_official?
     can :manage, CarRegistration if user.is_user?
   end
 end
