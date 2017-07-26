@@ -1,6 +1,6 @@
 pragma solidity ^0.4.13;
 
-contract AbstractMapping {
+contract InsuranceMapping {
   function update(bytes32 hashOwnerData, address registerContract);
 }
 
@@ -25,8 +25,9 @@ contract RegisterCar{
     bytes32 public hashCertTitle;           // Fahrzeugbrief/Zulassungsbescheinigung Teil 2
     bytes32 public hashHu;                  // Hu-Bericht
 
+    address public insuranceLookup;
     //information of
-    uint public timestamp;
+    uint public submitTime;
 
     enum State { submitted, incomplete, accepted, declined, canceled }
     State public state;
@@ -49,7 +50,7 @@ contract RegisterCar{
       bytes32 _hashCertRegistration,  // Fahrzeugschein/Zulassungsbescheinigung Teil 1
       bytes32 _hashCertTitle,         // Fahrzeugbrief/Zulassungsbescheinigung Teil 2
       bytes32 _hashHu,
-      address insuranceLookup
+      address _insuranceLookup
       ){
       ownerFirstname = _ownerFirstname;
       ownerLastname = _ownerLastname;
@@ -67,31 +68,38 @@ contract RegisterCar{
       hashCertRegistration = _hashCertRegistration;
       hashCertTitle = _hashCertTitle;
       hashHu = _hashHu;
-      timestamp = now;
+      submitTime = now;
       state = State.submitted;
-      AbstractMapping insuranceMapping = AbstractMapping(insuranceLookup);
-      bytes32 ownerDataHash = sha3(
-        strConcat(
-          strConcat(
-            strConcat(
-              strConcat(
-                strConcat(
-                  strConcat(ownerFirstname,
-                    ownerLastname
-                  ),
-                  ownerBirthday
-                ),
-                ownerStreet
-              ),
-              ownerStreetNumber
-            ),
-            ownerZipcode
-          ),
-          ownerCity
-        )
-      );
-      insuranceMapping.update(ownerDataHash, this);
+      // everything in one call as constructor does not allow me to declare a 16th variable "stack level too deep"
+      // AbstractMapping(insuranceLookup).update(sha3(
+      //   strConcat(
+      //     strConcat(
+      //       strConcat(
+      //         strConcat(
+      //           strConcat(
+      //             strConcat(ownerFirstname,
+      //               ownerLastname
+      //             ),
+      //             ownerBirthday
+      //           ),
+      //           ownerStreet
+      //         ),
+      //         ownerStreetNumber
+      //       ),
+      //       ownerZipcode
+      //     ),
+      //     ownerCity
+      //   )
+      // ), this);
+      insuranceLookup = _insuranceLookup;
+      InsuranceMapping(insuranceLookup).update(sha3(ownerFirstname), this);
     }
+
+    // function stringToBytes32(string memory source) returns (bytes32 result) {
+    //   assembly {
+    //       result := mload(add(source, 32))
+    //   }
+    // }
 
     function setOwnerFirstname(
         string _ownerFirstname){
@@ -168,9 +176,9 @@ contract RegisterCar{
         hashHu = _hashHu;
     }
 
-    function setTimestamp(
-        uint _timestamp){
-        timestamp = _timestamp;
+    function setSubmitTime(
+        uint _submitTime){
+        submitTime = _submitTime;
     }
 
     function setSubmitted() {
@@ -199,15 +207,14 @@ contract RegisterCar{
       state = State.accepted;
     }
 
-    function strConcat(string _a, string _b, string _c, string _d, string _e) internal returns (string){
-      bytes memory _ba = bytes(_a);
-      bytes memory _bb = bytes(_b);
-      string memory ab = new string(_ba.length + _bb.length);
-      bytes memory bab = bytes(ab);
-      uint k = 0;
-      for (uint i = 0; i < _ba.length; i++) bab[k++] = _ba[i];
-      for (i = 0; i < _bb.length; i++) bab[k++] = _bb[i];
-      return string(bab);
-    }
-
+    // function strConcat(string _a, string _b) internal returns (string){
+    //   bytes memory _ba = bytes(_a);
+    //   bytes memory _bb = bytes(_b);
+    //   string memory ab = new string(_ba.length + _bb.length);
+    //   bytes memory bab = bytes(ab);
+    //   uint k = 0;
+    //   for (uint i = 0; i < _ba.length; i++) bab[k++] = _ba[i];
+    //   for (i = 0; i < _bb.length; i++) bab[k++] = _bb[i];
+    //   return string(bab);
+    // }
 }

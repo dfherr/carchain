@@ -19,7 +19,7 @@ module Car
         row[:reference] = reg.contract_address.sub(/^0x/, '')
         row[:status] = CarRegistration::REGISTER_STATE[contract.call.state]
         row[:owner] = "#{contract.call.owner_firstname} #{contract.call.owner_lastname}"
-        row[:time] = Time.at(contract.call.timestamp.to_i).strftime("%d.%m.%Y")
+        row[:time] = Time.at(contract.call.submit_time.to_i).strftime("%d.%m.%Y %H:%M")
         @table_data << row
       end
     end
@@ -62,7 +62,7 @@ module Car
 
       client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
       client.gas_price = 0
-      contract = Ethereum::Contract.create(file: "smartcontracts/RegisterCar.sol", client: client)
+      contract = Ethereum::Contract.create(file: "smartcontracts/RegisterCar.sol", client: client, contract_index: 1)
       contract.key = Rails.configuration.eth_deploy_key
       contract.deploy_and_wait(
         params[:firstname],
@@ -78,8 +78,10 @@ module Car
         [coc_hash].pack('H*'),
         [certificate_registration_hash].pack('H*'),
         [certificate_title_hash].pack('H*'),
-        [hu_hash].pack('H*')
+        [hu_hash].pack('H*'),
+        "0xAec4f25D8EB795B14F665ceb88B6FD9114C34bCE"
       )
+      puts contract.address
       current_user.car_registrations.create(contract_address: contract.address) do |cr|
         cr.contract_abi = contract.abi.to_json
         cr.identity_card_file = identity_card_file_data

@@ -17,7 +17,7 @@ module Car
         row[:reference] = reg.contract_address.sub(/^0x/, '')
         row[:status] = CarRegistration::REGISTER_STATE[contract.call.state]
         row[:owner] = "#{contract.call.owner_firstname} #{contract.call.owner_lastname}"
-        row[:time] = Time.at(contract.call.timestamp.to_i).strftime("%d.%m.%Y")
+        row[:time] = Time.at(contract.call.submit_time.to_i).strftime("%d.%m.%Y")
         @table_data << row
       end
     end
