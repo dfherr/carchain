@@ -1,5 +1,9 @@
 pragma solidity ^0.4.13;
 
+contract AbstractMapping {
+  function update(bytes32 hashOwnerData, address registerContract);
+}
+
 contract RegisterCar{
 
     // information of car owner
@@ -29,41 +33,64 @@ contract RegisterCar{
 
     // initialize contract with all required information
     function RegisterCar(
-        // information of car owner
-        string _ownerFirstname,
-        string _ownerLastname,
-        string _ownerBirthday,
-        string _ownerStreet,
-        string _ownerStreetNumber,
-        string _ownerZipcode,
-        string _ownerCity,
-        // information of car
-        string _vehicleNumber,          // Fahrzeugnummer
-        string _evbNumber,              // elektronische Versicherungsbestaetigung
-        bytes32 _hashIdentidyCard,      // Personalausweis
-        bytes32 _hashCoc,               // EG-UebereinstimmungsbescheinigungEg
-        bytes32 _hashCertRegistration,  // Fahrzeugschein/Zulassungsbescheinigung Teil 1
-        bytes32 _hashCertTitle,         // Fahrzeugbrief/Zulassungsbescheinigung Teil 2
-        bytes32 _hashHu
-        ){
-        ownerFirstname = _ownerFirstname;
-        ownerLastname = _ownerLastname;
-        ownerBirthday = _ownerBirthday;
-        ownerStreet = _ownerStreet;
-        ownerStreetNumber = _ownerStreetNumber;
-        ownerZipcode = _ownerZipcode;
-        ownerCity = _ownerCity;
+      // information of car owner
+      string _ownerFirstname,
+      string _ownerLastname,
+      string _ownerBirthday,
+      string _ownerStreet,
+      string _ownerStreetNumber,
+      string _ownerZipcode,
+      string _ownerCity,
+      // information of car
+      string _vehicleNumber,          // Fahrzeugnummer
+      string _evbNumber,              // elektronische Versicherungsbestaetigung
+      bytes32 _hashIdentidyCard,      // Personalausweis
+      bytes32 _hashCoc,               // EG-UebereinstimmungsbescheinigungEg
+      bytes32 _hashCertRegistration,  // Fahrzeugschein/Zulassungsbescheinigung Teil 1
+      bytes32 _hashCertTitle,         // Fahrzeugbrief/Zulassungsbescheinigung Teil 2
+      bytes32 _hashHu,
+      address insuranceLookup
+      ){
+      ownerFirstname = _ownerFirstname;
+      ownerLastname = _ownerLastname;
+      ownerBirthday = _ownerBirthday;
+      ownerStreet = _ownerStreet;
+      ownerStreetNumber = _ownerStreetNumber;
+      ownerZipcode = _ownerZipcode;
+      ownerCity = _ownerCity;
 
-        // information of car
-        vehicleNumber =_vehicleNumber;
-        hashIdentidyCard = _hashIdentidyCard;
-        hashCoc =_hashCoc;
-        evbNumber = _evbNumber;
-        hashCertRegistration = _hashCertRegistration;
-        hashCertTitle = _hashCertTitle;
-        hashHu = _hashHu;
-        timestamp = now;
-        state = State.submitted;
+      // information of car
+      vehicleNumber =_vehicleNumber;
+      hashIdentidyCard = _hashIdentidyCard;
+      hashCoc =_hashCoc;
+      evbNumber = _evbNumber;
+      hashCertRegistration = _hashCertRegistration;
+      hashCertTitle = _hashCertTitle;
+      hashHu = _hashHu;
+      timestamp = now;
+      state = State.submitted;
+      AbstractMapping insuranceMapping = AbstractMapping(insuranceLookup);
+      bytes32 ownerDataHash = sha3(
+        strConcat(
+          strConcat(
+            strConcat(
+              strConcat(
+                strConcat(
+                  strConcat(ownerFirstname,
+                    ownerLastname
+                  ),
+                  ownerBirthday
+                ),
+                ownerStreet
+              ),
+              ownerStreetNumber
+            ),
+            ownerZipcode
+          ),
+          ownerCity
+        )
+      );
+      insuranceMapping.update(ownerDataHash, this);
     }
 
     function setOwnerFirstname(
@@ -171,4 +198,16 @@ contract RegisterCar{
       licenseTag = _licenseTag;
       state = State.accepted;
     }
+
+    function strConcat(string _a, string _b, string _c, string _d, string _e) internal returns (string){
+      bytes memory _ba = bytes(_a);
+      bytes memory _bb = bytes(_b);
+      string memory ab = new string(_ba.length + _bb.length);
+      bytes memory bab = bytes(ab);
+      uint k = 0;
+      for (uint i = 0; i < _ba.length; i++) bab[k++] = _ba[i];
+      for (i = 0; i < _bb.length; i++) bab[k++] = _bb[i];
+      return string(bab);
+    }
+
 }
