@@ -27,7 +27,7 @@
         <% end %>
         <% if can? :manage, Car::InsuranceController %>
           <li <%= "class=active" if current_page?(car_insurance_search_for_registration_path) %>>
-            <%= link_to _("Insurance"), car_insurance_search_for_registration_path %>
+            <%= link_to _("Insurance"), car_insurance_path %>
           </li>
         <% end %>
         <% if can? :manage, Car::PoliceController %>

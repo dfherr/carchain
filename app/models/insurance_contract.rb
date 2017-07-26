@@ -1,0 +1,2 @@
+class InsuranceContract < ApplicationRecord
+end

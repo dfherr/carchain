@@ -19,7 +19,7 @@ module Car
         row[:reference] = reg.contract_address.sub(/^0x/, '')
         row[:status] = CarRegistration::REGISTER_STATE[contract.call.state]
         row[:owner] = "#{contract.call.owner_firstname} #{contract.call.owner_lastname}"
-        row[:time] = Time.at(contract.call.submit_time.to_i).strftime("%d.%m.%Y %H:%M")
+        row[:time] = Time.at(contract.call.submit_time.to_i).getlocal('+02:00').strftime("%d.%m.%Y %H:%M")
         @table_data << row
       end
     end
@@ -28,7 +28,11 @@ module Car
 
     def details; end
 
+    # This is the core method of adding a registration to the ethereum backend
+    #
+    #
     def create_registration
+      # make params necessary
       params.require(:firstname)
       params.require(:lastname)
       params.require(:birthdate)
@@ -43,6 +47,9 @@ module Car
       params.require(:certificate_title)
       params.require(:hu)
 
+      # get the insurance lookup contract
+      ic_address = insurance_conctract_address
+
       # hash files
       identity_card_file_data = params[:identity_card].tempfile.read
       identity_card_hash = Digest::SHA3.hexdigest(identity_card_file_data, 256)
@@ -56,14 +63,17 @@ module Car
         certificate_registration_file_data = nil
       end
       certificate_title_file_data = params[:certificate_title].tempfile.read
-      certificate_title_hash = Digest::SHA3.hexdigest(certificate_registration_file_data, 256)
+      certificate_title_hash = Digest::SHA3.hexdigest(certificate_title_file_data, 256)
       hu_file_data = params[:hu].tempfile.read
       hu_hash = Digest::SHA3.hexdigest(hu_file_data, 256)
 
+      # init client
       client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
       client.gas_price = 0
+      # create contract from source files
       contract = Ethereum::Contract.create(file: "smartcontracts/RegisterCar.sol", client: client, contract_index: 1)
       contract.key = Rails.configuration.eth_deploy_key
+      # deploy contract with values
       contract.deploy_and_wait(
         params[:firstname],
         params[:lastname],
@@ -79,9 +89,9 @@ module Car
         [certificate_registration_hash].pack('H*'),
         [certificate_title_hash].pack('H*'),
         [hu_hash].pack('H*'),
-        "0xAec4f25D8EB795B14F665ceb88B6FD9114C34bCE"
+        ic_address
       )
-      puts contract.address
+      # add contract and actual files to database for reference
       current_user.car_registrations.create(contract_address: contract.address) do |cr|
         cr.contract_abi = contract.abi.to_json
         cr.identity_card_file = identity_card_file_data
@@ -95,6 +105,7 @@ module Car
         cr.hu_file = hu_file_data
         cr.hu_sha3_256 = hu_hash
       end
+      # redirect back to overview
       redirect_to car_registration_path
     end
 
@@ -106,6 +117,19 @@ module Car
 
     def authorize
       authorize! :manage, CarRegistration
+    end
+
+    # returns the insurance contract address, or creates and deploys it if there is none yet
+    def insurance_conctract_address
+      return InsuranceContract.first.contract_address if InsuranceContract.count > 0
+
+      client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
+      client.gas_price = 0
+      contract = Ethereum::Contract.create(file: "smartcontracts/InsuranceMapping.sol", client: client)
+      contract.key = Rails.configuration.eth_deploy_key
+      contract.deploy_and_wait
+      ic = InsuranceContract.create(contract_address: contract.address, contract_abi: contract.abi)
+      ic.contract_address
     end
   end
 end

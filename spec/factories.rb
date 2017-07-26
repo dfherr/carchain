@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :insurance_contract do
+    contract_address "0x00"
+    contract_abi ""
+  end
   factory :car_registration do
     user
     contract_address "0x00"

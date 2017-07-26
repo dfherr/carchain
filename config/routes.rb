@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     get '/official', to: 'official#index'
     get '/official/accept_registration/:id', to: 'official#accept_registration', as: 'accept_registration'
 
+    get '/insurance', to: 'insurance#index'
     get '/insurance/search_for_registration', to: 'insurance#search_for_registration'
+
     get '/police/search_for_owner', to: 'police#search_for_owner'
   end
 

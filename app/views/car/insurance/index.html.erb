@@ -1,0 +1,22 @@
+<div class="well">
+  <h2 class="col-lg-offset-3">
+    Status der Registrierung abfragen
+  </h2>
+  <div>
+  <%= form_tag car_insurance_search_for_registration_path, method: :get, class: "form-horizontal" do %>
+    <fieldset>
+      <div class="form-group">
+        <%= label_tag 'evb_number', "eVB-Nummer", class: 'col-lg-3 control-label' %>
+        <div class="col-lg-5">
+          <%= text_field_tag 'evb_number', nil, class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-offset-3 col-lg-5">
+          <button type="submit" class="btn btn-primary btn-block">Suchen</button>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+  </div>
+</div>

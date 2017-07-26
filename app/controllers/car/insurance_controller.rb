@@ -2,16 +2,30 @@ module Car
   class InsuranceController < ApplicationController
     before_action :authorize
 
+    # searches for a existing registration in the blockchain by a evb number
     def search_for_registration
-      @registrations = current_user.car_registrations
+      params.require(:evb_number)
+      ic = InsuranceContract.first
+      @result = {}
+      return unless ic
       client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
       client.gas_price = 0
-      contract = Ethereum::Contract.create(name: "RegisterCar",
-                                           address: "0xAec4f25D8EB795B14F665ceb88B6FD9114C34bCE",
-                                           abi: "",
+      contract = Ethereum::Contract.create(name: "InsuranceLookup",
+                                           address: ic.contract_address,
+                                           abi: ic.contract_abi,
                                            client: client)
-      contract.key = Rails.configuration.eth_deploy_key
-      puts contract.call.lookup_register_contract([Digest::SHA3.hexdigest("test", 256)].pack('H*'))
+      evb_number_hash = Digest::SHA3.hexdigest(params[:evb_number], 256)
+      reg_address = contract.call.lookup_register_contract([evb_number_hash].pack('H*'))
+      reg = CarRegistration.find_by(contract_address: "0x" + reg_address)
+      return unless reg
+      reg_contract = Ethereum::Contract.create(name: "RegisterCar",
+                                               address: reg.contract_address,
+                                               abi: reg.contract_abi,
+                                               client: client)
+      @result[:owner] = "#{reg_contract.call.owner_firstname} #{reg_contract.call.owner_lastname}"
+      @result[:license_tag] = reg_contract.call.license_tag
+      @result[:status] = CarRegistration::REGISTER_STATE[reg_contract.call.state]
+      @result[:updated] = Time.at(reg_contract.call.update_time.to_i).getlocal('+02:00').strftime("%d.%m.%Y %H:%M")
     end
 
     private

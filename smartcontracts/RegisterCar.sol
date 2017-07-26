@@ -1,7 +1,7 @@
 pragma solidity ^0.4.13;
 
 contract InsuranceMapping {
-  function update(bytes32 hashOwnerData, address registerContract);
+  function update(bytes32 hashEvbNumber, address registerContract);
 }
 
 contract RegisterCar{
@@ -28,6 +28,7 @@ contract RegisterCar{
     address public insuranceLookup;
     //information of
     uint public submitTime;
+    uint public updateTime;
 
     enum State { submitted, incomplete, accepted, declined, canceled }
     State public state;
@@ -69,37 +70,11 @@ contract RegisterCar{
       hashCertTitle = _hashCertTitle;
       hashHu = _hashHu;
       submitTime = now;
+      updateTime = now;
       state = State.submitted;
-      // everything in one call as constructor does not allow me to declare a 16th variable "stack level too deep"
-      // AbstractMapping(insuranceLookup).update(sha3(
-      //   strConcat(
-      //     strConcat(
-      //       strConcat(
-      //         strConcat(
-      //           strConcat(
-      //             strConcat(ownerFirstname,
-      //               ownerLastname
-      //             ),
-      //             ownerBirthday
-      //           ),
-      //           ownerStreet
-      //         ),
-      //         ownerStreetNumber
-      //       ),
-      //       ownerZipcode
-      //     ),
-      //     ownerCity
-      //   )
-      // ), this);
       insuranceLookup = _insuranceLookup;
-      InsuranceMapping(insuranceLookup).update(sha3(ownerFirstname), this);
+      InsuranceMapping(insuranceLookup).update(sha3(evbNumber), this);
     }
-
-    // function stringToBytes32(string memory source) returns (bytes32 result) {
-    //   assembly {
-    //       result := mload(add(source, 32))
-    //   }
-    // }
 
     function setOwnerFirstname(
         string _ownerFirstname){
@@ -156,9 +131,10 @@ contract RegisterCar{
         hashCoc = _hashCoc;
     }
 
-    function setHashEvb(
+    function setEvbNumber(
         string _evbNumber){
         evbNumber = _evbNumber;
+        InsuranceMapping(insuranceLookup).update(sha3(evbNumber), this);
     }
 
     function setHashCertRegistration() returns(
@@ -182,39 +158,35 @@ contract RegisterCar{
     }
 
     function setSubmitted() {
+      updateTime = now;
       state = State.submitted;
     }
 
     function setIncomplete() {
+      updateTime = now;
       state = State.incomplete;
     }
 
     function setAccepted() {
+      updateTime = now;
       state = State.accepted;
     }
 
     function setDeclined() {
+      updateTime = now;
       state = State.declined;
     }
 
     function setCanceled() {
+      updateTime = now;
       state = State.canceled;
     }
 
     function accept(
         string _licenseTag) {
+      updateTime = now;
       licenseTag = _licenseTag;
       state = State.accepted;
     }
 
-    // function strConcat(string _a, string _b) internal returns (string){
-    //   bytes memory _ba = bytes(_a);
-    //   bytes memory _bb = bytes(_b);
-    //   string memory ab = new string(_ba.length + _bb.length);
-    //   bytes memory bab = bytes(ab);
-    //   uint k = 0;
-    //   for (uint i = 0; i < _ba.length; i++) bab[k++] = _ba[i];
-    //   for (i = 0; i < _bb.length; i++) bab[k++] = _bb[i];
-    //   return string(bab);
-    // }
 }
