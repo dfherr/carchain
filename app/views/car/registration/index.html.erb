@@ -27,13 +27,7 @@
             <td><%= registration[:status][:text] %></td>
             <td><%= registration[:time] %></td>
             <td>
-              <div class="btn-group">
-                <a href="#" class="btn btn-primary btn-xs dropdown-toggle btn-block" data-toggle="dropdown"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li> <%= link_to "Details", car_registration_details_path(registration[:id]) %></li>
-                  <li><%= link_to "Abmelden", car_registration_end_registration_path %></li>
-                </ul>
-              </div>
+              <li> <%= link_to "Details", car_registration_details_path(registration[:id]), class: 'btn btn-xs btn-primary' %></li>
             </td>
           </tr>
         <% end %>

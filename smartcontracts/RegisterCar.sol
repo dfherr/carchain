@@ -165,4 +165,10 @@ contract RegisterCar{
     function setCanceled() {
       state = State.canceled;
     }
+
+    function accept(
+        string _licenseTag) {
+      licenseTag = _licenseTag;
+      state = State.accepted;
+    }
 }
