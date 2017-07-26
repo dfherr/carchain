@@ -1,3 +1,3 @@
 module Carchain
-  VERSION = "0.0.7p4".freeze
+  VERSION = "0.0.7p5".freeze
 end
