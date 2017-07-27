@@ -7,7 +7,7 @@
 * register car to ethereum blockchain
 * unregister car to the blockchain
 * offical accepts registration and provides licenseTag
-* search for registration data as insurance via owner data
+* search for registration data as insurance via evb number
 * search for owner data as police via licenseTag
 
 ### Additions
