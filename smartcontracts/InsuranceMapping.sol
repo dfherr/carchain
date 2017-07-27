@@ -1,5 +1,6 @@
 pragma solidity ^0.4.13;
 
+// Mapping contract for insurance search. Maps hash of the evb_number to RegisterCar contrac
 contract InsuranceMapping{
   mapping(bytes32 => address) insuranceLookup;
 

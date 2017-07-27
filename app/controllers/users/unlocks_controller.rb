@@ -1,15 +1,15 @@
 class Users::UnlocksController < Devise::UnlocksController
-  # GET /resource/unlock/new
+  # GET /users/unlock/new
   def new
     super
   end
 
-  # POST /resource/unlock
+  # POST /users/unlock
   def create
     super
   end
 
-  # GET /resource/unlock?unlock_token=abcdef
+  # GET /users/unlock?unlock_token=abcdef
   def show
     super
   end

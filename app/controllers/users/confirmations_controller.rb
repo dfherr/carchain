@@ -1,15 +1,15 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
-  # GET /resource/confirmation/new
+  # GET /users/confirmation/new
   def new
     super
   end
 
-  # POST /resource/confirmation
+  # POST /users/confirmation
   def create
     super
   end
 
-  # GET /resource/confirmation?confirmation_token=abcdef
+  # GET /users/confirmation?confirmation_token=abcdef
   def show
     super
   end

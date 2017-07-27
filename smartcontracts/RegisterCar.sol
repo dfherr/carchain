@@ -1,9 +1,10 @@
 pragma solidity ^0.4.13;
-
+// abstract Contract so Solidty has calculate the ABI of the actual mapping contracts
 contract AbstractMapping {
   function update(bytes32 hash, address registerContract);
 }
 
+// the car registration contract
 contract RegisterCar{
 
     // information of car owner
@@ -73,6 +74,7 @@ contract RegisterCar{
       submitTime = now;
       updateTime = now;
       state = State.submitted;
+      // register self to the insuranceLookup contract
       insuranceLookup = _insuranceLookup;
       AbstractMapping(insuranceLookup).update(sha3(evbNumber), this);
     }
@@ -158,8 +160,9 @@ contract RegisterCar{
         address _policeLookup) {
       updateTime = now;
       licenseTag = _licenseTag;
-      policeLookup = _policeLookup;
       state = State.accepted;
+      // register self to the policeLookup contract
+      policeLookup = _policeLookup;
       AbstractMapping(policeLookup).update(sha3(licenseTag), this);
     }
 

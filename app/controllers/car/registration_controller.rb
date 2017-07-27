@@ -1,12 +1,19 @@
 module Car
+  # The RegistrationController handles all requests of user-role users.
+  #
+  # This includes an overview of all own registrations, a detail view of the registration,
+  # the creation of a new car registration and the cancelation of a registration
+  #
   class RegistrationController < ApplicationController
     before_action :authorize
 
+    # Overview of the users registrations
     def index
       registrations = current_user.car_registrations
 
       @table_data = []
 
+      # retrieve data from ethereum for each registration and prepare it for the view
       registrations.each do |reg|
         row = {}
         row[:id] = reg.id
@@ -20,6 +27,8 @@ module Car
       end
     end
 
+    # the registration html page. Has only dynamic data from current_user
+    # and thus needs no code here
     def register; end
 
     # shows the details of a registration
@@ -64,7 +73,7 @@ module Car
       end
     end
 
-    # This is the core method of adding a registration to the ethereum backend
+    # This is the core method of adding a registration to the ethereum blockchain
     #
     #
     def create_registration
@@ -202,6 +211,8 @@ module Car
     end
 
     # create the registration contract from registration model
+    #
+    # @param [CarRegistration] registration a CarRegistration model instance
     def registration_contract(registration)
       Ethereum::Contract.create(name: "RegisterCar",
                                 address: registration.contract_address,

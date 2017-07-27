@@ -1,9 +1,16 @@
 module Car
+  # The OfficialController handles all requests of official-role users.
+  #
+  # This includes an overview of all registrations, a detail view of the registration,
+  # the accept, decline and incomplete actions for a registration
+  #
   class OfficialController < ApplicationController
+    # Overview of all registrations
     def index
       registrations = CarRegistration.all
       @table_data = []
 
+      # retrieve data from ethereum for each registration and prepare it for the view
       registrations.each do |reg|
         row = {}
         row[:id] = reg.id
@@ -16,6 +23,7 @@ module Car
       end
     end
 
+    # shows the details of a registration
     def details
       begin
         registration = CarRegistration.find(params[:id])
@@ -53,6 +61,7 @@ module Car
       @result[:hu] = registration.hu_file_name
     end
 
+    # set registration state to accepted in the ethereum blockchain and assign licensetag
     def accept_registration
       params.require(:id)
       params.require(:license_tag)
@@ -73,6 +82,7 @@ module Car
       redirect_to car_official_path
     end
 
+    # set registration state to incomplete in the ethereum blockchain
     def incomplete_registration
       params.require(:id)
       begin
@@ -89,6 +99,7 @@ module Car
       redirect_to car_official_path
     end
 
+    # set registration state to decline in the ethereum blockchain
     def decline_registration
       params.require(:id)
       begin

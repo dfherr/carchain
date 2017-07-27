@@ -1,5 +1,6 @@
 pragma solidity ^0.4.13;
 
+// Mapping contract for police search. Maps hash of the license_tag to RegisterCar contrac
 contract PoliceMapping{
   mapping(bytes32 => address) policeLookup;
 

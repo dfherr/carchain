@@ -1,5 +1,8 @@
 pragma solidity ^0.4.2;
 
+// Contract for testing purposes
+//
+//
 contract mortal {
     /* Define variable owner of the type address*/
     address owner;

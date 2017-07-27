@@ -1,20 +1,20 @@
 class Users::PasswordsController < Devise::PasswordsController
-  # GET /resource/password/new
+  # GET /users/password/new
   def new
     super
   end
 
-  # POST /resource/password
+  # POST /users/password
   def create
     super
   end
 
-  # GET /resource/password/edit?reset_password_token=abcdef
+  # GET /users/password/edit?reset_password_token=abcdef
   def edit
     super
   end
 
-  # PUT /resource/password
+  # PUT /users/password
   def update
     super
   end
