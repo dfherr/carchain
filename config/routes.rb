@@ -25,11 +25,14 @@ Rails.application.routes.draw do
     get '/registration', to: 'registration#index'
     get '/registration/register', to: 'registration#register'
     get '/registration/details/:id', to: 'registration#details', as: 'registration_details'
-    get '/registration/end_registration', to: 'registration#end_registration'
     post '/registration/register', to: 'registration#create_registration', as: 'create_registration'
+    post '/registration/cancel/:id', to: 'registration#cancel_registration', as: 'cancel_registration'
 
     get '/official', to: 'official#index'
-    get '/official/accept_registration/:id', to: 'official#accept_registration', as: 'accept_registration'
+    get '/official/details/:id', to: 'official#details', as: 'official_details'
+    post '/official/accept/:id', to: 'official#accept_registration', as: 'accept_registration'
+    post '/official/incomplete/:id', to: 'official#incomplete_registration', as: 'incomplete_registration'
+    post '/official/decline/:id', to: 'official#decline_registration', as: 'decline_registration'
 
     get '/insurance', to: 'insurance#index'
     get '/insurance/search_for_registration', to: 'insurance#search_for_registration'

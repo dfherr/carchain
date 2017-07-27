@@ -9,7 +9,7 @@ contract RegisterCar{
     // information of car owner
     string public ownerFirstname;
     string public ownerLastname;
-    string public ownerBirthday;
+    string public ownerBirthdate;
     string public ownerStreet;
     string public ownerStreetNumber;
     string public ownerZipcode;
@@ -38,7 +38,7 @@ contract RegisterCar{
       // information of car owner
       string _ownerFirstname,
       string _ownerLastname,
-      string _ownerBirthday,
+      string _ownerBirthdate,
       string _ownerStreet,
       string _ownerStreetNumber,
       string _ownerZipcode,
@@ -55,7 +55,7 @@ contract RegisterCar{
       ){
       ownerFirstname = _ownerFirstname;
       ownerLastname = _ownerLastname;
-      ownerBirthday = _ownerBirthday;
+      ownerBirthdate = _ownerBirthdate;
       ownerStreet = _ownerStreet;
       ownerStreetNumber = _ownerStreetNumber;
       ownerZipcode = _ownerZipcode;
@@ -86,9 +86,9 @@ contract RegisterCar{
         ownerLastname = _ownerLastname;
     }
 
-    function setOwnerBirthday(
-        string _ownerBirthday){
-        ownerBirthday = _ownerBirthday;
+    function setOwnerBirthdate(
+        string _ownerBirthdate){
+        ownerBirthdate = _ownerBirthdate;
     }
 
     function setOwnerStreet(
@@ -157,36 +157,28 @@ contract RegisterCar{
         submitTime = _submitTime;
     }
 
-    function setSubmitted() {
-      updateTime = now;
-      state = State.submitted;
-    }
-
-    function setIncomplete() {
-      updateTime = now;
-      state = State.incomplete;
-    }
-
-    function setAccepted() {
-      updateTime = now;
-      state = State.accepted;
-    }
-
-    function setDeclined() {
-      updateTime = now;
-      state = State.declined;
-    }
-
-    function setCanceled() {
-      updateTime = now;
-      state = State.canceled;
-    }
-
     function accept(
         string _licenseTag) {
       updateTime = now;
       licenseTag = _licenseTag;
       state = State.accepted;
     }
+
+    function incomplete() {
+      updateTime = now;
+      state = State.incomplete;
+    }
+
+    function decline() {
+      updateTime = now;
+      state = State.declined;
+    }
+
+    function cancel() {
+      updateTime = now;
+      licenseTag = "";
+      state = State.canceled;
+    }
+
 
 }

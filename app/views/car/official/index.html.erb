@@ -27,7 +27,7 @@
             <td><%= registration[:status][:text] %></td>
             <td><%= registration[:time] %></td>
             <td>
-              <%= link_to 'Accept', car_accept_registration_path(registration[:id]), class: 'btn btn-xs btn-primary' %>
+              <%= link_to 'Details', car_official_details_path(registration[:id]), class: 'btn btn-xs btn-primary' %>
             </td>
           </tr>
         <% end %>

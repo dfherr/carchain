@@ -4,7 +4,7 @@ class CarRegistration < ApplicationRecord
     { text: "Unvollständig", class: "warning" },
     { text: "Angemeldet", class: "success" },
     { text: "Abgelehnt", class: "danger" },
-    { text: "In Abgemeldet", class: "danger" }
+    { text: "Abgemeldet", class: "danger" }
   ].freeze
 
   belongs_to :user

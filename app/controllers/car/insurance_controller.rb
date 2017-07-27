@@ -8,8 +8,7 @@ module Car
       ic = InsuranceContract.first
       @result = {}
       return unless ic
-      client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
-      client.gas_price = 0
+      client = ethereum_client
       contract = Ethereum::Contract.create(name: "InsuranceLookup",
                                            address: ic.contract_address,
                                            abi: ic.contract_abi,

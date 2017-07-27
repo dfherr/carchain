@@ -18,4 +18,11 @@ class ApplicationController < ActionController::Base
   def localize
     FastGettext.locale = cookies[:locale] || 'de'
   end
+
+  def ethereum_client
+    return @client if @client
+    @client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
+    @client.gas_price = 0
+    @client
+  end
 end
