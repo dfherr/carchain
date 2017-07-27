@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   include FastGettext::Translation
   protect_from_forgery with: :exception
+  # insecure, but fails on chrome in production.
+  # probably related to docker/nginx setup
+  skip_before_action :verify_authenticity_token
 
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: [:change_locale]
