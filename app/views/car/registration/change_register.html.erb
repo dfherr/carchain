@@ -54,59 +54,60 @@
   </div>
   <div class="col-lg-6">
     <h2>
-      Antrag
+      Antrag auf Umeldung des Fahrzeugs
     </h2>
+    <h3>mit Kennzeichen: <%= @result[:license_tag] %></h3>
 
-  <%= form_tag car_create_registration_path, multipart: true, class: "form-horizontal" do %>
+  <%= form_tag car_change_registration_path, multipart: true, class: "form-horizontal" do %>
     <fieldset>
       <div class="form-group">
         <%= label_tag 'firstname', "Vorname", class: 'col-lg-3 control-label' %>
         <div class="col-lg-9">
-          <%= text_field_tag 'firstname', current_user.firstname, class: 'form-control', required: true %>
+          <%= text_field_tag 'firstname', @result[:owner_firstname], class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
         <%= label_tag 'lastname', "Nachname", class: 'col-lg-3 control-label' %>
         <div class="col-lg-9">
-          <%= text_field_tag 'lastname', current_user.lastname, class: 'form-control', required: true %>
+          <%= text_field_tag 'lastname', @result[:owner_lastname], class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
         <%= label_tag 'birthdate', "Geburtsdatum", class: 'col-lg-3 control-label' %>
         <div class="col-lg-9">
-          <%= text_field_tag 'birthdate', nil, class: 'form-control', required: true %>
+          <%= text_field_tag 'birthdate',  @result[:birthdate], class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
         <%= label_tag 'street', "Straße", class: 'col-lg-3 control-label' %>
         <div class="col-lg-6">
-          <%= text_field_tag 'street', nil, class: 'form-control', required: true %>
+          <%= text_field_tag 'street',  @result[:street], class: 'form-control', required: true %>
         </div>
         <%= label_tag 'street_number', "Nr", class: 'col-lg-1 control-label' %>
         <div class="col-lg-2">
-          <%= text_field_tag 'street_number', nil, class: 'form-control', required: true %>
+          <%= text_field_tag 'street_number', @result[:street_number], class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
         <%= label_tag 'zipcode', "PLZ", class: 'col-lg-3 control-label' %>
         <div class="col-lg-3">
-          <%= text_field_tag 'zipcode', nil, class: 'form-control', required: true %>
+          <%= text_field_tag 'zipcode', @result[:zipcode], class: 'form-control', required: true %>
         </div>
         <%= label_tag 'city', "Stadt", class: 'col-lg-2 control-label' %>
         <div class="col-lg-4">
-          <%= text_field_tag 'city', nil, class: 'form-control', required: true %>
+          <%= text_field_tag 'city', @result[:city], class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
         <%= label_tag 'vehicle_number', "FIN", class: 'col-lg-3 control-label' %>
         <div class="col-lg-9">
-          <%= text_field_tag 'vehicle_number', nil, class: 'form-control', required: true %>
+          <%= text_field_tag 'vehicle_number', @result[:vehicle_number], class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
         <%= label_tag 'evb', "eVB", class: 'col-lg-3 control-label' %>
         <div class="col-lg-9">
-          <%= text_field_tag 'evb', nil, class: 'form-control', required: true %>
+          <%= text_field_tag 'evb', @result[:evb], class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
@@ -123,7 +124,7 @@
             </li>
             <li>
               Fahrzeugschein/Zulassungsbescheinigung Teil I
-              <%= file_field_tag 'certificate_registration', accept: 'application/pdf' %>
+              <%= file_field_tag 'certificate_registration', required: true, accept: 'application/pdf' %>
             </li>
             <li>
               Fahrzeugbrief/Zulassungsbescheinigung Teil II
@@ -141,7 +142,7 @@
           <%= link_to "Abbrechen", car_registration_path, class: 'btn btn-danger btn-block' %>
         </div>
         <div class="col-lg-7">
-          <button type="submit" class="btn btn-primary btn-block">Abschicken</button>
+          <button type="submit" class="btn btn-primary btn-block">Ummelden</button>
         </div>
       </div>
     </fieldset>

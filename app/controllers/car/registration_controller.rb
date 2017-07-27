@@ -2,7 +2,8 @@ module Car
   # The RegistrationController handles all requests of user-role users.
   #
   # This includes an overview of all own registrations, a detail view of the registration,
-  # the creation of a new car registration and the cancelation of a registration
+  # the creation of a new car registration, change of a current registration
+  # and the cancelation of a registration
   #
   class RegistrationController < ApplicationController
     before_action :authorize
@@ -31,6 +32,44 @@ module Car
     # and thus needs no code here
     def register; end
 
+    # render the page for changing a registration
+    #
+    # this is nearly the same as register, but with different buttons and prefilled data
+    def change_register
+      begin
+        registration = CarRegistration.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        flash[:notice] = "Antrag existiert nicht."
+        return redirect_to car_official_path
+      end
+      # make sure user only accesses his own contracts
+      if registration.user_id == current_user.id
+        reg_contract = registration_contract(registration)
+        @result = {}
+        # allgemeine daten
+        @result[:id] = registration.id
+        @result[:ref] = reg_contract.address.sub(/^0x/, '').truncate(16, omission: '')
+
+        # halterdaten
+        @result[:owner_firstname] = reg_contract.call.owner_firstname
+        @result[:owner_lastname] = reg_contract.call.owner_lastname
+        @result[:street] = reg_contract.call.owner_street
+        @result[:street_number] = reg_contract.call.owner_street_number
+        @result[:zipcode] = reg_contract.call.owner_zipcode
+        @result[:city] = reg_contract.call.owner_city
+        @result[:birthdate] = reg_contract.call.owner_birthdate
+
+        # kfz daten
+        @result[:license_tag] = reg_contract.call.license_tag
+        @result[:evb] = reg_contract.call.evb_number
+        @result[:vehicle_number] = reg_contract.call.vehicle_number
+
+      else
+        flash[:alert] = "Not authorized."
+        return redirect_to car_registration_path
+      end
+    end
+
     # shows the details of a registration
     def details
       begin
@@ -39,6 +78,7 @@ module Car
         flash[:notice] = "Antrag existiert nicht."
         return redirect_to car_official_path
       end
+      # make sure user only accesses his own contracts
       if registration.user_id == current_user.id
         reg_contract = registration_contract(registration)
         @result = {}
@@ -170,6 +210,44 @@ module Car
       end
       # redirect back to overview
       redirect_to car_registration_path
+    end
+
+    # change the registration pm the blockchain
+    #
+    # this cancels the provided registration and creates a new one
+    def change_registration
+      params.require(:certificate_registration)
+      params.require(:firstname)
+      params.require(:lastname)
+      params.require(:birthdate)
+      params.require(:street)
+      params.require(:street_number)
+      params.require(:zipcode)
+      params.require(:city)
+      params.require(:vehicle_number)
+      params.require(:identity_card)
+      params.require(:coc)
+      params.require(:evb)
+      params.require(:certificate_title)
+      params.require(:hu)
+      begin
+        registration = CarRegistration.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        flash[:notice] = "Antrag existiert nicht."
+        return redirect_to car_official_path
+      end
+      # make sure user only accesses his own contracts
+      if registration.user_id == current_user.id
+        reg_contract = registration_contract(registration)
+        reg_contract.key = Rails.configuration.eth_deploy_key
+        # first cancel the current registration
+        reg_contract.transact_and_wait.cancel
+        # now create a new one
+        return create_registration
+      else
+        flash[:alert] = "Not authorized."
+        return redirect_to car_registration_path
+      end
     end
 
     # set the registration state to cancled and remove licensetag

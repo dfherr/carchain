@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   namespace :car do
     get '/registration', to: 'registration#index'
     get '/registration/register', to: 'registration#register'
+    get '/registration/change/:id', to: 'registration#change_register', as: 'change_register'
     get '/registration/details/:id', to: 'registration#details', as: 'registration_details'
+    post '/registration/change/:id', to: 'registration#change_registration', as: 'change_registration'
     post '/registration/register', to: 'registration#create_registration', as: 'create_registration'
     post '/registration/cancel/:id', to: 'registration#cancel_registration', as: 'cancel_registration'
 
