@@ -7,7 +7,6 @@ class CreateCarRegistrations < ActiveRecord::Migration[5.1]
       t.string :identity_card_sha3_256
       t.string :identity_card_file_name
       t.binary :identity_card_file
-      t.string :identity_card_file_name
 
       t.string :coc_sha3_256
       t.string :coc_file_name
