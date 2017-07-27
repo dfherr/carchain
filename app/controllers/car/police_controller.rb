@@ -33,6 +33,7 @@ module Car
       @result[:status] = CarRegistration::REGISTER_STATE[reg_contract.call.state]
       @result[:updated] = Time.at(reg_contract.call.update_time.to_i).getlocal('+02:00').strftime("%d.%m.%Y %H:%M")
       @result[:license_tag] = reg_contract.call.license_tag
+      @result[:vehicle_number] = reg_contract.call.vehicle_number
     end
 
     private
