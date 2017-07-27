@@ -16,6 +16,18 @@ RSpec.describe Car::RegistrationController, type: :routing do
                                                              id: "1")
     end
 
+    it "get /car/registration/change routes to car/registration#register" do
+      expect(get: "/car/registration/change/1").to route_to(controller: "car/registration",
+                                                            action: "change_register",
+                                                            id: "1")
+    end
+
+    it "post /car/registration/change routes to car/registration#change_registration" do
+      expect(post: "/car/registration/change/1").to route_to(controller: "car/registration",
+                                                             action: "change_registration",
+                                                             id: "1")
+    end
+
     it "get /registration/details routes to car/registration#details" do
       expect(get: "/car/registration/details/1").to route_to(controller: "car/registration",
                                                              action: "details",
