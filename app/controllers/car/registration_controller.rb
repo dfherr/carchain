@@ -86,6 +86,7 @@ module Car
       # get the insurance lookup contract
       ic_address = insurance_conctract_address
 
+      logger.debug("Car::RegistrationController: parsing input")
       # hash files
       identity_card_file_data = params[:identity_card].tempfile.read
       identity_card_file_name = params[:identity_card].original_filename
@@ -110,9 +111,10 @@ module Car
       hu_hash = Digest::SHA3.hexdigest(hu_file_data, 256)
 
       # init client
-      client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
-      client.gas_price = 0
+      client = ethereum_client
+
       # create contract from source files
+      logger.info("Car::RegistrationController: Creating new RegisterCar Contract")
       contract = Ethereum::Contract.create(file: "smartcontracts/RegisterCar.sol", client: client, contract_index: 1)
       contract.key = Rails.configuration.eth_deploy_key
       # deploy contract with values
@@ -133,6 +135,7 @@ module Car
         [hu_hash].pack('H*'),
         ic_address
       )
+      logger.debug("Car::RegistrationController: Adding new contract references to database")
       # add contract and actual files to database for reference
       current_user.car_registrations.create(contract_address: contract.address) do |cr|
         cr.contract_abi = contract.abi.to_json
@@ -186,8 +189,9 @@ module Car
 
     # returns the insurance contract address, or creates and deploys it if there is none yet
     def insurance_conctract_address
+      logger.debug("Car::RegistrationController: loading insurance contract")
       return InsuranceContract.first.contract_address if InsuranceContract.count > 0
-
+      logger.debug("Car::RegistrationController: creating the Insurance contract")
       client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
       client.gas_price = 0
       contract = Ethereum::Contract.create(file: "smartcontracts/InsuranceMapping.sol", client: client)

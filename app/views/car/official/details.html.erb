@@ -82,10 +82,20 @@
         </div>
       </div>
       <div class="col-lg-4">
-        <% if @result[:status_id] == 0 %>
-          <%= link_to "Unvollständig", car_incomplete_registration_path(@result[:id]), class: 'btn btn-warning', method: :post %>
-        <% end %>
-        <%= link_to "Ablehnen", car_decline_registration_path(@result[:id]), class: 'btn btn-danger', method: :post %>
+        <div class="container">
+          <% if @result[:status_id] == 0 %>
+            <%= form_tag car_incomplete_registration_path(@result[:id]), class: "form-horizontal" do %>
+              <div class="form-group">
+                <button type="submit" data-confirm="Are you sure?" class="btn btn-warning">Unvollständig</button>
+              </div>
+            <% end %>
+          <% end %>
+          <%= form_tag car_decline_registration_path(@result[:id]), class: "form-horizontal" do %>
+            <div class="form-group">
+              <button type="submit" data-confirm="Are you sure?" class="btn btn-danger">Ablehnen</button>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

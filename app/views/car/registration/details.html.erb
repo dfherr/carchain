@@ -59,7 +59,9 @@
   <% if @result[:status_id] != 4 %>
     <div class="row pagination-centered">
       <div class="col-lg-4">
-        <%= link_to "Abmelden", car_cancel_registration_path(@result[:id]), class: 'btn btn-danger', method: :post %>
+        <%= form_tag car_cancel_registration_path(@result[:id]), class: "form-horizontal" do %>
+            <button type="submit" data-confirm="Are you sure?" class="btn btn-danger">Abmelden</button>
+        <% end %>
       </div>
     </div>
   <% end %>
