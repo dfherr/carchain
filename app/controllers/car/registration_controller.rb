@@ -11,7 +11,7 @@ module Car
         row = {}
         row[:id] = reg.id
         contract = registration_contract(reg)
-        row[:reference] = reg.contract_address.sub(/^0x/, '')
+        row[:reference] = reg.contract_address.sub(/^0x/, '').truncate(16, omission: '')
         row[:status] = CarRegistration::REGISTER_STATE[contract.call.state]
         row[:license_tag] = contract.call.license_tag
         row[:owner] = "#{contract.call.owner_firstname} #{contract.call.owner_lastname}"
@@ -35,7 +35,7 @@ module Car
         @result = {}
         # allgemeine daten
         @result[:id] = registration.id
-        @result[:ref] = reg_contract.address.sub(/^0x/, '')
+        @result[:ref] = reg_contract.address.sub(/^0x/, '').truncate(16, omission: '')
 
         # halterdaten
         @result[:owner_firstname] = reg_contract.call.owner_firstname

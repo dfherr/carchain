@@ -22,6 +22,9 @@ FactoryGirl.define do
     firstname "First"
     lastname "last"
     after(:build, &:skip_confirmation_notification!)
+    after(:create) do |u|
+      u.add_role :user
+    end
   end
 
   factory :confirmed_user, parent: :user do
