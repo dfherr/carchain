@@ -86,13 +86,13 @@
           <% if @result[:status_id] == 0 %>
             <%= form_tag car_incomplete_registration_path(@result[:id]), class: "form-horizontal" do %>
               <div class="form-group">
-                <button type="submit" data-confirm="Are you sure?" class="btn btn-warning">Unvollständig</button>
+                <button type="submit" data-confirm="<%= _('Are you sure?') %>" class="btn btn-warning">Unvollständig</button>
               </div>
             <% end %>
           <% end %>
           <%= form_tag car_decline_registration_path(@result[:id]), class: "form-horizontal" do %>
             <div class="form-group">
-              <button type="submit" data-confirm="Are you sure?" class="btn btn-danger">Ablehnen</button>
+              <button type="submit" data-confirm="<%= _('Are you sure?') %>" class="btn btn-danger">Ablehnen</button>
             </div>
           <% end %>
         </div>

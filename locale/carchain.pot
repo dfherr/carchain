@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-24 01:40+0000\n"
-"PO-Revision-Date: 2017-07-24 01:40+0000\n"
+"POT-Creation-Date: 2017-07-27 14:08+0000\n"
+"PO-Revision-Date: 2017-07-27 14:08+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,32 +18,112 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../app/controllers/users/roles_controller.rb:18
+#: ../app/controllers/users/roles_controller.rb:29
 msgid "Role may not be empty!"
 msgstr ""
 
-#: ../app/controllers/users/roles_controller.rb:23
+#: ../app/controllers/users/roles_controller.rb:31
 msgid "User #%{user} already has role %{role}."
 msgstr ""
 
-#: ../app/controllers/users/roles_controller.rb:25
+#: ../app/controllers/users/roles_controller.rb:33
 msgid "Role %{role} added to user #%{user}"
 msgstr ""
 
-#: ../app/controllers/users/roles_controller.rb:27
+#: ../app/controllers/users/roles_controller.rb:35
 msgid "Could not add role %{role} to user #%{user}"
 msgstr ""
 
-#: ../app/controllers/users/roles_controller.rb:41
+#: ../app/controllers/users/roles_controller.rb:61
 msgid "You can't remove that role, because the user could no longer manage roles."
 msgstr ""
 
-#: ../app/controllers/users/roles_controller.rb:43
+#: ../app/controllers/users/roles_controller.rb:63
 msgid "Role %{role} removed from user #%{user}"
 msgstr ""
 
-#: ../app/controllers/users/roles_controller.rb:46
+#: ../app/controllers/users/roles_controller.rb:66
 msgid "Could not remove role %{role} from user #%{user}"
+msgstr ""
+
+#: ../app/views/car/insurance/index.html.erb:3
+msgid "Query status of registration"
+msgstr ""
+
+#: ../app/views/car/insurance/index.html.erb:9
+#: ../app/views/car/insurance/search_for_registration.html.erb:36
+msgid "evB Number"
+msgstr ""
+
+#: ../app/views/car/insurance/index.html.erb:16
+#: ../app/views/car/insurance/search_for_registration.html.erb:43
+#: ../app/views/car/police/index.html.erb:17
+msgid "Search"
+msgstr ""
+
+#: ../app/views/car/insurance/search_for_registration.html.erb:3
+msgid "Status of the registration"
+msgstr ""
+
+#: ../app/views/car/insurance/search_for_registration.html.erb:12
+#: ../app/views/car/official/index.html.erb:15
+#: ../app/views/car/registration/index.html.erb:16
+msgid "Owner"
+msgstr ""
+
+#: ../app/views/car/insurance/search_for_registration.html.erb:13
+#: ../app/views/car/registration/index.html.erb:15
+msgid "License"
+msgstr ""
+
+#: ../app/views/car/insurance/search_for_registration.html.erb:14
+#: ../app/views/car/official/index.html.erb:16
+#: ../app/views/car/registration/index.html.erb:17
+msgid "Status"
+msgstr ""
+
+#: ../app/views/car/insurance/search_for_registration.html.erb:15
+#: ../app/views/car/official/index.html.erb:17
+#: ../app/views/car/registration/index.html.erb:18
+msgid "Date"
+msgstr ""
+
+#: ../app/views/car/insurance/search_for_registration.html.erb:32
+msgid "Other query"
+msgstr ""
+
+#: ../app/views/car/official/details.html.erb:89
+#: ../app/views/car/official/details.html.erb:95
+#: ../app/views/car/registration/details.html.erb:63
+#: ../app/views/users/roles/manage.html.erb:37
+msgid "Are you sure?"
+msgstr ""
+
+#: ../app/views/car/official/index.html.erb:3
+msgid "Overview of registration requests"
+msgstr ""
+
+#: ../app/views/car/official/index.html.erb:14
+#: ../app/views/car/registration/index.html.erb:14
+msgid "Reference"
+msgstr ""
+
+#: ../app/views/car/official/index.html.erb:30
+#: ../app/views/car/registration/index.html.erb:32
+msgid "Details"
+msgstr ""
+
+#: ../app/views/car/police/index.html.erb:4
+msgid "Query vehicle data"
+msgstr ""
+
+#: ../app/views/car/registration/index.html.erb:3
+msgid "Overview of your registration"
+msgstr ""
+
+#: ../app/views/home/imprint.html.erb:3
+#: ../app/views/layouts/application.html.erb:94
+msgid "Imprint"
 msgstr ""
 
 #: ../app/views/layouts/_navbar.html.erb:17
@@ -54,38 +134,38 @@ msgstr ""
 msgid "Register car"
 msgstr ""
 
-#: ../app/views/layouts/_navbar.html.erb:23
-msgid "Unregister car"
+#: ../app/views/layouts/_navbar.html.erb:25
+msgid "Official"
 msgstr ""
 
-#: ../app/views/layouts/_navbar.html.erb:26
-msgid "Change car registration"
+#: ../app/views/layouts/_navbar.html.erb:30
+msgid "Insurance"
 msgstr ""
 
-#: ../app/views/layouts/_navbar.html.erb:33
+#: ../app/views/layouts/_navbar.html.erb:35
+msgid "Police"
+msgstr ""
+
+#: ../app/views/layouts/_navbar.html.erb:42
 msgid "Manage roles"
 msgstr ""
 
-#: ../app/views/layouts/_navbar.html.erb:41
+#: ../app/views/layouts/_navbar.html.erb:50
 msgid "Log out"
 msgstr ""
 
-#: ../app/views/layouts/_navbar.html.erb:45
+#: ../app/views/layouts/_navbar.html.erb:54
 msgid "Log in"
 msgstr ""
 
-#: ../app/views/layouts/application.html.erb:77
-msgid "Imprint"
-msgstr ""
-
-#: ../app/views/layouts/application.html.erb:82
+#: ../app/views/layouts/application.html.erb:99
 msgid "Language"
 msgstr ""
 
-#: ../app/views/layouts/application.html.erb:84
+#: ../app/views/layouts/application.html.erb:101
 msgid "German"
 msgstr ""
 
-#: ../app/views/layouts/application.html.erb:86
+#: ../app/views/layouts/application.html.erb:103
 msgid "English"
 msgstr ""

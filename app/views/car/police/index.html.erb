@@ -1,6 +1,6 @@
 <div class="well">
   <h2 class="col-lg-offset-4">
-    KFZ-Fahrzeug Daten abfragen
+    <%= _('Query vehicle data') %>
   </h2>
   <div>
   <%= form_tag car_police_search_for_owner_path, method: :get, class: "form-horizontal" do %>
@@ -13,7 +13,7 @@
       </div>
       <div class="form-group">
         <div class="col-lg-offset-4 col-lg-4">
-          <button type="submit" class="btn btn-primary btn-block">Suchen</button>
+          <button type="submit" class="btn btn-primary btn-block"><%= _('Search') %></button>
         </div>
       </div>
     </fieldset>

@@ -1,6 +1,6 @@
 <div class="well">
   <h2 class="col-lg-offset-4">
-    Status der Registrierung
+    <%= _('Status of the registration') %>
   </h2>
 
   <% if @result.empty? %>
@@ -9,10 +9,10 @@
   <table class="table table-striped table-hover ">
     <thead>
     <tr>
-      <th>Halter</th>
-      <th>Kennzeichen</th>
-      <th>Status</th>
-      <th>Datum</th>
+      <th><%= _('Owner') %> Halter</th>
+      <th><%= _('License') %>Kennzeichen</th>
+      <th><%= _('Status') %>Status</th>
+      <th><%= _('Date') %>Datum</th>
     </tr>
     </thead>
     <tbody>
@@ -29,18 +29,18 @@
     &nbsp;
   </div>
   <div>
-    <h4 class="col-lg-offset-4">Weitere Anfrage:</h4>
+    <h4 class="col-lg-offset-4"><%= _('Other query') %>:</h4>
   <%= form_tag car_insurance_search_for_registration_path, method: :get, class: "form-horizontal" do %>
     <fieldset>
       <div class="form-group">
-        <%= label_tag 'evb_number', "eVB-Nummer", class: 'col-lg-4 control-label' %>
+        <%= label_tag 'evb_number', _('evB Number'), class: 'col-lg-4 control-label' %>
         <div class="col-lg-4">
           <%= text_field_tag 'evb_number', nil, class: 'form-control', required: true %>
         </div>
       </div>
       <div class="form-group">
         <div class="col-lg-offset-4 col-lg-4">
-          <button type="submit" class="btn btn-primary btn-block">Suchen</button>
+          <button type="submit" class="btn btn-primary btn-block"><%= _('Search') %></button>
         </div>
       </div>
     </fieldset>

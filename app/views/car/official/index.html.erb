@@ -1,6 +1,6 @@
 <div class="col-lg-12 well">
 <h2>
-  Übersicht über Ihre Anträge
+  <%= _('Overview of registration requests') %>
 </h2>
   <div class="table-responsive">
     <% if @table_data.empty? %>
@@ -11,10 +11,10 @@
         <thead>
         <tr>
           <th>#</th>
-          <th>Referenz</th>
-          <th>Halter</th>
-          <th>Status</th>
-          <th>Datum</th>
+          <th><%= _('Reference') %></th>
+          <th><%= _('Owner') %></th>
+          <th><%= _('Status') %></th>
+          <th><%= _('Date') %></th>
           <th></th>
         </tr>
         </thead>
@@ -27,7 +27,7 @@
             <td><%= registration[:status][:text] %></td>
             <td><%= registration[:time] %></td>
             <td>
-              <%= link_to 'Details', car_official_details_path(registration[:id]), class: 'btn btn-xs btn-primary' %>
+              <%= link_to _('Details'), car_official_details_path(registration[:id]), class: 'btn btn-xs btn-primary' %>
             </td>
           </tr>
         <% end %>

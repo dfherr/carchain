@@ -34,7 +34,7 @@
             <td><%= role.name %></td>
             <td>
               <%= form_tag users_roles_destroy_path(@user, role), method: :delete, class: "form-horizontal" do %>
-                  <button type="submit" data-confirm="Are you sure?" class="btn btn-sm btn-danger">X</button>
+                  <button type="submit" data-confirm="<%= _('Are you sure?') %>" class="btn btn-sm btn-danger">X</button>
               <% end %>
             </td>
           </tr>
