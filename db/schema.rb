@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726223222) do
+ActiveRecord::Schema.define(version: 20170727020851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20170726223222) do
   end
 
   create_table "insurance_contracts", force: :cascade do |t|
+    t.string "contract_address", null: false
+    t.jsonb "contract_abi", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "police_contracts", force: :cascade do |t|
     t.string "contract_address", null: false
     t.jsonb "contract_abi", null: false
     t.datetime "created_at", null: false

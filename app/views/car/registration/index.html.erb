@@ -12,6 +12,7 @@
         <tr>
           <th>#</th>
           <th>Referenz</th>
+          <th>Kennzeichen</th>
           <th>Halter</th>
           <th>Status</th>
           <th>Datum</th>
@@ -23,6 +24,7 @@
           <tr class="<%= registration[:status][:class] %>">
             <td><%= i+1 %></td>
             <td><span class="hash-value"><%= registration[:reference] %></span></td>
+            <td><%= registration[:license_tag] %></td>
             <td><%= registration[:owner] %></td>
             <td><%= registration[:status][:text] %></td>
             <td><%= registration[:time] %></td>

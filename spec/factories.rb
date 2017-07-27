@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :police_contract do
+    contract_address "0x00"
+    contract_abi ""
+  end
   factory :insurance_contract do
     contract_address "0x00"
     contract_abi ""

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.13;
 
-contract InsuranceMapping {
-  function update(bytes32 hashEvbNumber, address registerContract);
+contract AbstractMapping {
+  function update(bytes32 hash, address registerContract);
 }
 
 contract RegisterCar{
@@ -26,6 +26,7 @@ contract RegisterCar{
     bytes32 public hashHu;                  // Hu-Bericht
 
     address public insuranceLookup;
+    address public policeLookup;
     //information of
     uint public submitTime;
     uint public updateTime;
@@ -73,7 +74,7 @@ contract RegisterCar{
       updateTime = now;
       state = State.submitted;
       insuranceLookup = _insuranceLookup;
-      InsuranceMapping(insuranceLookup).update(sha3(evbNumber), this);
+      AbstractMapping(insuranceLookup).update(sha3(evbNumber), this);
     }
 
     function setOwnerFirstname(
@@ -111,11 +112,6 @@ contract RegisterCar{
         ownerCity = _ownerCity;
     }
 
-    function setLicenseTag(
-        string _licenseTag){
-        licenseTag = _licenseTag;
-    }
-
     function setVehicleNumber(
         string _vehicleNumber){
         vehicleNumber = _vehicleNumber;
@@ -134,7 +130,7 @@ contract RegisterCar{
     function setEvbNumber(
         string _evbNumber){
         evbNumber = _evbNumber;
-        InsuranceMapping(insuranceLookup).update(sha3(evbNumber), this);
+        AbstractMapping(insuranceLookup).update(sha3(evbNumber), this);
     }
 
     function setHashCertRegistration() returns(
@@ -158,10 +154,13 @@ contract RegisterCar{
     }
 
     function accept(
-        string _licenseTag) {
+        string _licenseTag,
+        address _policeLookup) {
       updateTime = now;
       licenseTag = _licenseTag;
+      policeLookup = _policeLookup;
       state = State.accepted;
+      AbstractMapping(policeLookup).update(sha3(licenseTag), this);
     }
 
     function incomplete() {
@@ -176,7 +175,6 @@ contract RegisterCar{
 
     function cancel() {
       updateTime = now;
-      licenseTag = "";
       state = State.canceled;
     }
 

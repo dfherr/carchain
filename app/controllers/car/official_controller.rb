@@ -57,6 +57,8 @@ module Car
       params.require(:id)
       params.require(:license_tag)
 
+      pc_address = police_conctract_address
+
       begin
         registration = CarRegistration.find(params[:id])
       rescue ActiveRecord::RecordNotFound
@@ -67,7 +69,7 @@ module Car
       contract = registration_contract(registration)
 
       contract.key = Rails.configuration.eth_deploy_key
-      contract.transact_and_wait.accept(params[:license_tag])
+      contract.transact_and_wait.accept(params[:license_tag].capitalize, pc_address)
       redirect_to car_official_path
     end
 
@@ -111,6 +113,19 @@ module Car
                                 address: registration.contract_address,
                                 abi: registration.contract_abi,
                                 client: ethereum_client)
+    end
+
+    # returns the police contract address, or creates and deploys it if there is none yet
+    def police_conctract_address
+      return PoliceContract.first.contract_address if PoliceContract.count > 0
+
+      client = Ethereum::HttpClient.new(Rails.configuration.parity_json_rpc_url)
+      client.gas_price = 0
+      contract = Ethereum::Contract.create(file: "smartcontracts/PoliceMapping.sol", client: client)
+      contract.key = Rails.configuration.eth_deploy_key
+      contract.deploy_and_wait
+      pc = PoliceContract.create(contract_address: contract.address, contract_abi: contract.abi)
+      pc.contract_address
     end
   end
 end

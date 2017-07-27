@@ -1,0 +1,2 @@
+class PoliceContract < ApplicationRecord
+end

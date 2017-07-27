@@ -13,6 +13,7 @@ module Car
         contract = registration_contract(reg)
         row[:reference] = reg.contract_address.sub(/^0x/, '')
         row[:status] = CarRegistration::REGISTER_STATE[contract.call.state]
+        row[:license_tag] = contract.call.license_tag
         row[:owner] = "#{contract.call.owner_firstname} #{contract.call.owner_lastname}"
         row[:time] = Time.at(contract.call.update_time.to_i).getlocal('+02:00').strftime("%d.%m.%Y %H:%M")
         @table_data << row

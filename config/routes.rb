@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get '/insurance', to: 'insurance#index'
     get '/insurance/search_for_registration', to: 'insurance#search_for_registration'
 
+    get '/police', to: 'police#index'
     get '/police/search_for_owner', to: 'police#search_for_owner'
   end
 

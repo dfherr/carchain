@@ -32,7 +32,7 @@
         <% end %>
         <% if can? :manage, Car::PoliceController %>
           <li <%= "class=active" if current_page?(car_police_search_for_owner_path) %>>
-            <%= link_to _("Police"), car_police_search_for_owner_path %>
+            <%= link_to _("Police"), car_police_path %>
           </li>
         <% end %>
       </ul>
