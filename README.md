@@ -5,6 +5,8 @@
 
 ### A Rails application for managing car-registration with Ethereum
 
+The app uses the default Rails conventions. For ethereum specific code checkout (smartcontracts)[tree/master/smartcontracts] and
+(app/controllers/car)[tree/master/app/controllers] source files.
 
 ## Usage
 
