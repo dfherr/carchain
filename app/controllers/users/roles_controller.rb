@@ -7,12 +7,22 @@ class Users::RolesController < ApplicationController
 
   # GET /users/manage
   def manage
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "Nutzer existiert nicht."
+      return redirect_to users_roles_manage_url
+    end
     authorize! :manage, @user
   end
 
   def add
-    user = User.find(params[:id])
+    begin
+      user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "Nutzer existiert nicht."
+      return redirect_to users_roles_manage_url
+    end
     authorize! :manage, user
     role_name = params[:user][:roles][:name].strip.gsub(/(_|\s)+/, "_")
     if role_name.empty?
@@ -28,9 +38,19 @@ class Users::RolesController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
+    begin
+      user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "Nutzer existiert nicht."
+      return redirect_to users_roles_manage_url
+    end
     authorize! :manage, user
-    role = Role.find(params[:role_id])
+    begin
+      role = Role.find(params[:role_id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "Rolle existiert nicht."
+      return redirect_to users_roles_manage_url
+    end
     old_ability = Ability.new(user)
     ActiveRecord::Base.transaction do
       if user.roles.destroy(role)
