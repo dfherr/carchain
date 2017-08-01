@@ -23,3 +23,5 @@ services using docker:
 [MIT](https://github.com/blc-psi/carchain/blob/master/LICENSE)
 
 Copyright (c) 2017 Dennis-Florian Herr, Franz Schneider, Matthias Mark
+
+Done as part of the "Advanced Practical Course - Blockchain technology for public sector innovation"
