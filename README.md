@@ -24,4 +24,4 @@ services using docker:
 
 Copyright (c) 2017 Dennis-Florian Herr, Franz Schneider, Matthias Mark
 
-Done as part of the "Advanced Practical Course - Blockchain technology for public sector innovation" @ TUM
+Created as part of the "Advanced Practical Course - Blockchain technology for public sector innovation" @ TUM
