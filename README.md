@@ -11,7 +11,7 @@ For ethereum specific code checkout [smartcontracts](smartcontracts) and [app/co
 
 ## Usage
 
-This is a sub-project of [carchain-env](https://github.com/blc-psi/carchain-env), which provides
+This is a sub-project of [carchain-env](https://github.com/dfherr/carchain-env), which provides
 [crane](https://github.com/michaelsauter/crane) configuration files for booting all necessary
 services using docker:
 * the carchain application
