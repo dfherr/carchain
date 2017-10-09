@@ -1,7 +1,7 @@
 # Carchain
 
-[![Build Status](https://travis-ci.org/blc-psi/carchain.svg?branch=master)](https://travis-ci.org/blc-psi/carchain)
-[![Coverage Status](https://img.shields.io/coveralls/blc-psi/carchain.svg)](https://coveralls.io/github/blc-psi/carchain)
+[![Build Status](https://travis-ci.org/dfherr/carchain.svg?branch=master)](https://travis-ci.org/dfherr/carchain)
+[![Coverage Status](https://img.shields.io/coveralls/dfherr/carchain.svg)](https://coveralls.io/github/dfherr/carchain)
 
 ### A Rails application for managing car-registration with Ethereum
 
